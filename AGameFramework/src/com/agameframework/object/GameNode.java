@@ -38,7 +38,7 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 		super(tex);
 	}
 
-	public GameNode(ITexture texture, String text)
+	public GameNode(String text,ITexture texture)
 	{
 		super(texture,text);//TODO swap arguments
 	}
