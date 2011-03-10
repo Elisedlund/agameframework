@@ -12,7 +12,7 @@ import com.agameframework.texture.TextureHandler;
 
 public class Text{
 
-	private int mTextureCharHeight = 36;
+	private int mTextureCharHeight = 36; //bad. 32 to halve the texture size.
 	private int mTextureCharWidth = 32;
 	private int mCharPerLine = 16;
 
@@ -20,16 +20,16 @@ public class Text{
 	private int mTextWidth; // width of the whole text.
 	private int[] mTextWidthArray; // store every char width form text. without padding.
 
-//	private String mText;
+	//	private String mText;
 	private int[][] mTextCropArray; // the crop array for the given text.
 	private int mStrLength; // length the text.
 
-	//TODO load form String.xml + full string.
+	//TODO load form String.xml
 	private static String mCharPattern = " !\"#$%&`()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX¡¢£¤¥¦§¨©ª«¬­®¯ °±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ";
 
 	//TODO load.
 	//arial 32x36 s31 bold pos: 1,3 
-	private int[] mCharWidthArray = 
+	private static int[] mCharWidthArray = 
 	{7,8,12,14,14,24,19,6,9,9,10,15,7,9,7,7,
 			14,14,14,14,14,14,14,14,14,14,10,10,15,15,15,16,
 			25,19,19,19,19,17,16,20,19,8,14,19,16,23,19,20,
@@ -44,6 +44,8 @@ public class Text{
 			19,19,20,20,20,20,20,15,20,19,19,19,19,17,17,16,
 			14,14,14,14,14,14,23,14,14,14,14,14,7,7,7,7,
 			16,16,16,16,16,16,16,14,16,16,16,16,16,14,16,14};
+	private static int mCurrentFontId = -1;
+	private static Bitmap mFontBitmap;
 
 
 
@@ -71,7 +73,7 @@ XXXXXXXXXXXXXXXX
 	public void setText(String str)
 	{	 
 		int size = str.length();
-//		mText = str;
+		//		mText = str;
 		mStrLength = size;
 		mTextWidth = 0;
 		mTextCropArray = new int[size][4];
@@ -112,7 +114,12 @@ XXXXXXXXXXXXXXXX
 
 	public Bitmap TextToBitmap(int resourceId)
 	{
-		Bitmap fontBitmap = TextureHandler.loadBitmap(resourceId);
+		if(mCurrentFontId != resourceId)
+		{
+			mCurrentFontId = resourceId;
+			mFontBitmap = TextureHandler.loadBitmap(resourceId);
+		}
+
 		Bitmap.Config config = Bitmap.Config.ARGB_8888;
 		Bitmap textBitmap = Bitmap.createBitmap(getTextWidth()+mPadding,getTextHeight(),config);
 		Canvas canvas = new Canvas(textBitmap); 
@@ -123,9 +130,9 @@ XXXXXXXXXXXXXXXX
 		{
 			Rect src = new Rect(mTextCropArray[i][0], mTextCropArray[i][1]-mTextureCharHeight, mTextCropArray[i][0]+mTextCropArray[i][2], mTextCropArray[i][1]);
 			Rect dst = new Rect(nextX,0,nextX + +mTextCropArray[i][2],getTextHeight());
-//			Debug.print("src: " + src);
-//			Debug.print("dst: " + dst);
-			canvas.drawBitmap(fontBitmap, src, dst ,null);
+			//			Debug.print("src: " + src);
+			//			Debug.print("dst: " + dst);
+			canvas.drawBitmap(mFontBitmap, src, dst ,null);
 			nextX += mTextWidthArray[i]; 
 		}
 		return textBitmap;

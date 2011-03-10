@@ -113,8 +113,7 @@ public class TextureHandler {
 	{
 		if(isIdLoaded(str))//return. The resource is loaded already
 		{return;} 
-//		Debug.print("loading static text: " + str);
-		Text text = new Text();
+		Text text = new Text(); //TODO once? 
 		text.setText(str);
 		Bitmap textBitmap = text.TextToBitmap(fontResourceID);
 		Texture texture = new Texture();
@@ -261,7 +260,7 @@ public class TextureHandler {
 	}//end of func 
 
 	private static void reloadStaticTextTexture(Texture textureThatNeedReload) {
-		Text text = new Text();
+		Text text = new Text(); //TODO only do once?.
 		text.setText(textureThatNeedReload.mText);
 		Bitmap textBitmap = text.TextToBitmap(textureThatNeedReload.mId);
 		loadTexture(textBitmap,textureThatNeedReload);
