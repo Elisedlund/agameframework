@@ -58,6 +58,9 @@ public class TODO {
 	//DONE AccelerometerMovement.add(gamenode). static add func? private constructor? in all input.
 	//DONE Set game size in Settings.
 	
+	
+	//TODO remove all public variables and create getters. ProGuard will optimize this anyway.
+	//TODO optimize text. static no static. text object creation. static dynamic separation? 
 	//TODO fix pulse to be relativ
 	//TODO menu effects.
 	//TODO remove constants in grow shring fade,
