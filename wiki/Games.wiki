@@ -1,3 +1,4 @@
 List of games using AGameFramework
 
-* Paper pong? (sample game included with AGF)
+ * Paper pong? (sample game included with AGF)
+ * More samples soon
