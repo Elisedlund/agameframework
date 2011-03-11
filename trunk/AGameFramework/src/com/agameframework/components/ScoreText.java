@@ -7,17 +7,15 @@ import com.agameframework.object.GameNode;
 import com.agameframework.settings.GameSettings;
 
 
-/*
- * Copyright (C) 2010 Elis Edlund.
+/**
+ *
+ * @author Elis - Email: Elisedlund@gmail.com - Date: 11 mar 2011
  */
-
-
 public class ScoreText extends GameNode{
 
 	protected GameNode mNumbers;
 	protected int lastScore = 0;
 	private int mNr = 1;
-
 
 	public ScoreText(int fontResourceID) {
 		super();

@@ -286,10 +286,13 @@ public class GameInput{
 		{
 			return false; //event not handled
 		}
+		
 		int size = sTrackballList.size();
 		for (int i = 0; i != size; i++)
 		{
-			sTrackballList.get(i).trackballMoved(event);
+			sTrackballList.get(i).trackball(event);
+			
+			
 		}
 		return true; //event handled
 	}

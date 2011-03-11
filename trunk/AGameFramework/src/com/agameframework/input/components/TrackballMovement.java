@@ -36,7 +36,7 @@ public class TrackballMovement implements TrackballListener , IRemovable{
 	 * if there is no trackball the keypress will be invoked instead
 	 */
 	@Override
-	public void trackballMoved(MotionEvent event) {
+	public void trackball(MotionEvent event) {
 		if (mMovement.mXMotion < getMaxSpeed() && mMovement.mXMotion > -getMaxSpeed())
 		{
 			mMovement.mXMotion += event.getX()*getImpact();

@@ -2,7 +2,6 @@ package com.agameframework.event;
 
 import com.agameframework.Game;
 import com.agameframework.interfaces.IEvent;
-import com.agameframework.sound.SoundEffectPlayer;
 
 public class SyncEvent implements IEvent{
 

@@ -35,7 +35,7 @@ public class SimpleTrackballMovement implements TrackballListener , IRemovable{
 	 * if there is no trackball the keypress will be invoked instead
 	 */
 	@Override
-	public void trackballMoved(MotionEvent event) {
+	public void trackball(MotionEvent event) {
 		mRect.incX(event.getX());	
 		mRect.incY(-event.getY());	
 	}

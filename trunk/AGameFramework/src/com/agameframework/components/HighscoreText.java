@@ -6,11 +6,10 @@ import com.agameframework.object.GameNode;
 import com.agameframework.settings.GameSettings;
 
 
-/*
- * Copyright (C) 2010 Elis Edlund.
+/**
+ *
+ * @author Elis - Email: Elisedlund@gmail.com - Date: 11 mar 2011
  */
-
-
 public class HighscoreText extends GameNode{
 
 	protected GameNode mNumbers;

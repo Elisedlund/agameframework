@@ -3,7 +3,6 @@ package com.agameframework.event;
 import com.agameframework.Game;
 import com.agameframework.interfaces.IEvent;
 import com.agameframework.sound.SoundEffectPlayer;
-import com.agameframework.utils.GameIntents;
 
 public class SoundAndVibrateEvent implements IEvent{
 
