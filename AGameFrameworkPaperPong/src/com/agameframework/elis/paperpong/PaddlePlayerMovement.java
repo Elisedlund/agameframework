@@ -39,7 +39,7 @@ public class PaddlePlayerMovement implements KeyPressListener,TrackballListener,
 	 * if there is no trackball the keypress will be invoked instead
 	 */
 	@Override
-	public void trackballMoved(MotionEvent event) {
+	public void trackball(MotionEvent event) {
 		int speed = 60;
 		mPaddle.mGoalX += event.getX()*speed;
 		if(mPaddle.mGoalX < mPaddle.getWidth()*0.5f)
