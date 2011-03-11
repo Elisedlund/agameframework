@@ -4,6 +4,6 @@ import android.view.MotionEvent;
 
 public interface TrackballListener {
 
-	void trackballMoved(MotionEvent event);
+	void trackball(MotionEvent event);
 
 }
