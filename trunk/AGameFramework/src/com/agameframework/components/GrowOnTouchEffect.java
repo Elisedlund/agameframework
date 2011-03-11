@@ -35,9 +35,9 @@ public class GrowOnTouchEffect extends GameNode{
 		IEvent addGrow = new AddUpdatableEvent(grow,mParent);
 		
 		CompositeEvent comp = new CompositeEvent();
-		IRemovable removeable = DoEventOnTouchMove.add(mParent,comp);
 		comp.add(addGrow);
 		comp.add(new VibrateEvent(25));
+		IRemovable removeable = DoEventOnTouchMove.add(mParent,comp);
 		comp.add(new RemoveEvent(removeable)); //so it only can be touched once.
 		
 	}

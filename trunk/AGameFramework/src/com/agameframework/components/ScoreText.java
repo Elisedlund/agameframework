@@ -65,16 +65,9 @@ public class ScoreText extends GameNode{
 		mNumbers.render(gl);
 	}
 
-	@Override
-	public float getWidth()
+	public float getWidthWithNumbers()
 	{
 		return super.getWidth() + mNumbers.getWidth();
-	}
-
-	@Override
-	public float getHeight()
-	{
-		return super.getHeight() + mNumbers.getHeight();
 	}
 
 	public GameNode getNumberNode()

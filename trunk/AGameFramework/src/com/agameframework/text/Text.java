@@ -12,17 +12,17 @@ import com.agameframework.texture.TextureHandler;
 
 public class Text{
 
-	private int mTextureCharHeight = 36; //bad. 32 to halve the texture size.
-	private int mTextureCharWidth = 32;
-	private int mCharPerLine = 16;
+	private static int mTextureCharHeight = 36; //bad. 32 to halve the texture size.
+	private static int mTextureCharWidth = 32;
+	private static int mCharPerLine = 16;
 
-	private int mPadding = 3; //extra width in texture crop so effects like shadow will show.
-	private int mTextWidth; // width of the whole text.
-	private int[] mTextWidthArray; // store every char width form text. without padding.
+	private static int mPadding = 3; //extra width in texture crop so effects like shadow will show.
+	private static int mTextWidth; // width of the whole text.
+	private static int[] mTextWidthArray; // store every char width form text. without padding.
 
 	//	private String mText;
-	private int[][] mTextCropArray; // the crop array for the given text.
-	private int mStrLength; // length the text.
+	private static int[][] mTextCropArray; // the crop array for the given text.
+	private static int mStrLength; // length the text.
 
 	//TODO load form String.xml
 	private static String mCharPattern = " !\"#$%&`()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX¡¢£¤¥¦§¨©ª«¬­®¯ °±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüışÿ";
@@ -66,14 +66,10 @@ XXXXXXXXXXXXXXXX
 àáâãäåæçèéêëìíîï
 ğñòóôõö÷øùúûüışÿ"
 	 */
-
-
-	//TODO static string map.
-
-	public void setText(String str)
+	
+	public static void setText(String str)
 	{	 
 		int size = str.length();
-		//		mText = str;
 		mStrLength = size;
 		mTextWidth = 0;
 		mTextCropArray = new int[size][4];
@@ -93,10 +89,6 @@ XXXXXXXXXXXXXXXX
 		} 
 	} // end of func
 
-	public int getTextWidth()
-	{
-		return mTextWidth;
-	}
 
 	public void render(GL10 gl, float left, float bottom, float scaleX,
 			float scaleY) 
@@ -112,7 +104,7 @@ XXXXXXXXXXXXXXXX
 		}
 	}
 
-	public Bitmap TextToBitmap(int resourceId)
+	public static Bitmap TextToBitmap(int resourceId)
 	{
 		if(mCurrentFontId != resourceId)
 		{
@@ -130,16 +122,23 @@ XXXXXXXXXXXXXXXX
 		{
 			Rect src = new Rect(mTextCropArray[i][0], mTextCropArray[i][1]-mTextureCharHeight, mTextCropArray[i][0]+mTextCropArray[i][2], mTextCropArray[i][1]);
 			Rect dst = new Rect(nextX,0,nextX + +mTextCropArray[i][2],getTextHeight());
-			//			Debug.print("src: " + src);
-			//			Debug.print("dst: " + dst);
+
 			canvas.drawBitmap(mFontBitmap, src, dst ,null);
 			nextX += mTextWidthArray[i]; 
 		}
 		return textBitmap;
 	}	
+	
+	public static int getTextWidth()
+	{
+		return mTextWidth;
+	}
 
-	public int getTextHeight() {
+	public static int getTextHeight() 
+	{
 		return mTextureCharHeight;
 	}
+	
+
 
 }// end of class.
