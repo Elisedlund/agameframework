@@ -26,17 +26,14 @@ AGameFramework - Version: 0.7.1 - 2010 Feb 05
 	New Features
 		* Sound effects with SoundEffectPlayer.
 		* Music with MusicPlayer (for larger soundfiles like background musik)
-		* Debug print debug messages with Debug.print(string) + Timeing + Traceing. 
-		  (you have to set the DEBUG_LEVEL for the two later)
-		
+		* Debug print debug messages with Debug.print(string) + Timeing + Traceing. (you have to set the DEBUG_LEVEL for the two later)
 		* Alpha scoreHandler
 	
 	Changes
-		* 
+	 
 	
 	Bug Fixes
 		* center of a sprite is now correct.
-		* 
 ----------------------------------------------
 AGameFramework - Version: 0.0.0 - 2011 Jan 01
 
@@ -45,12 +42,10 @@ AGameFramework - Version: 0.0.0 - 2011 Jan 01
 	
 	New Features
 		* 
-		* 
 	
 	Changes
 		* 
 	
 	Bug Fixes
-		* 
 		* 
 ----------------------------------------------
