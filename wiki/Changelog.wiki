@@ -32,7 +32,7 @@ Changes
 	 
 	
 Bug Fixes
-* Center of a sprite is now correct.
+ * Center of a sprite is now correct.
 ----
 AGameFramework - Version: 0.0.0 - 2011 Jan 01
 
