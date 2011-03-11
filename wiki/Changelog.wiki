@@ -1,4 +1,4 @@
-AGameEngine - Version: 0.8.0 - 2010 Feb 17 |
+AGameFramework - Version: 0.8.0 - 2010 Feb 17 
 
 	Overview
 		*Gameinput have been improved.
@@ -18,8 +18,7 @@ AGameEngine - Version: 0.8.0 - 2010 Feb 17 |
 	Bug Fixes
 		* center of a sprite is now correct.
 ----------------------------------------------
-----------------------------------------------
-| AGameEngine - Version: 0.7.1 - 2010 Feb 05 |
+AGameFramework - Version: 0.7.1 - 2010 Feb 05
 
 	Overview
 		* AGameEngine now supports sound and music.
@@ -39,8 +38,7 @@ AGameEngine - Version: 0.8.0 - 2010 Feb 17 |
 		* center of a sprite is now correct.
 		* 
 ----------------------------------------------
-----------------------------------------------
-| AGameEngine - Version: 0.0.0 - 2011 Jan 01 |
+AGameFramework - Version: 0.0.0 - 2011 Jan 01
 
 	Overview
 		* 
