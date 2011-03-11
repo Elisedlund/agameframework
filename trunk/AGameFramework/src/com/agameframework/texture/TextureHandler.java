@@ -43,6 +43,7 @@ public class TextureHandler {
 	private static ArrayList<Texture> sTextureList = new ArrayList<Texture>();
 
 	private static GL10 sGl;
+	private static Text sText = new Text();
 
 
 	public static void setGL(GL10 gl) {
@@ -114,8 +115,8 @@ public class TextureHandler {
 		if(isIdLoaded(str))//return. The resource is loaded already
 		{return;} 
 		
-		Text.setText(str);
-		Bitmap textBitmap = Text.TextToBitmap(fontResourceID);
+		sText.setText(str);
+		Bitmap textBitmap = sText.TextToBitmap(fontResourceID);
 		Texture texture = new Texture();
 		loadTexture(textBitmap,texture);
 		texture.mId = fontResourceID;
@@ -260,8 +261,8 @@ public class TextureHandler {
 	}//end of func 
 
 	private static void reloadStaticTextTexture(Texture textureThatNeedReload) {
-		Text.setText(textureThatNeedReload.mText);
-		Bitmap textBitmap = Text.TextToBitmap(textureThatNeedReload.mId);
+		sText .setText(textureThatNeedReload.mText);
+		Bitmap textBitmap = sText.TextToBitmap(textureThatNeedReload.mId);
 		loadTexture(textBitmap,textureThatNeedReload);
 	}
 
