@@ -1,3 +1,0 @@
-List of games using AGameFramework:
-
-*Paper pong? (sample game included with AGF)
