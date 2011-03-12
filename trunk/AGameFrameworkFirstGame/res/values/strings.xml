@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>    
+    <string name="app_name">First Game</string>
+    <string name="start_game">Start game</string>
+    <string name="update">Update</string>
+    <string name="more_games">More games</string>
+    <string name="mail_developer">Mail Developer</string>
+    <string name="quit_game">Quit game</string>
+    <string name="label_score">Score:</string>
+    <string name="label_highscore">Highscore:</string> 
+    <string name="touch_to_restart">Touch to restart!</string> 
+</resources>

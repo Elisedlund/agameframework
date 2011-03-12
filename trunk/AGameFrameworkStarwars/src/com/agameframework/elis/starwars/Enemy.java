@@ -2,7 +2,9 @@ package com.agameframework.elis.starwars;
 
 import com.agameframework.Game;
 import com.agameframework.conditions.YSmallerThenCondition;
+import com.agameframework.event.CompositeEvent;
 import com.agameframework.event.ConditionEvent;
+import com.agameframework.event.HealthIncEvent;
 import com.agameframework.event.SetPositionEvent;
 import com.agameframework.interfaces.IEvent;
 import com.agameframework.object.GameNode;
@@ -32,7 +34,8 @@ public class Enemy extends GameNode{
 		IEvent conditionEvent = new ConditionEvent(moveback  , new YSmallerThenCondition(this,-50f));
 		addUpdateable(new EventUpdatable(conditionEvent));
 		
-		addUpdateable(new CollisionUpdatable(this, GameRoot.mPlayer, new EnemyDieEvent(this)));
+		CompositeEvent colEvent = new CompositeEvent(new EnemyDieEvent(this), new HealthIncEvent(-5));
+		addUpdateable(new CollisionUpdatable(this, GameRoot.mPlayer, colEvent));
 	}
 
 }

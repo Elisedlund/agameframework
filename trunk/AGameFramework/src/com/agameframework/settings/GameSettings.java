@@ -236,6 +236,54 @@ public class GameSettings {
 		SCORE1 += inc;	
 	}
 	
+	//TODO have a maxhealth variable?.
+	//TODO event on zero health and lives. default event -1lives on 0health?.
+	public static int getHealth() {
+		return HEALTH;
+	}
+
+	public static String getHealthString() {
+		return Integer.toString(HEALTH);
+	}
+
+	public static void resetHealth()
+	{
+		HEALTH = 0; 
+	}
+	
+	public static void setHealth(int newHealth)
+	{
+		HEALTH = newHealth;
+	}
+
+	public static void incHealth(int inc)
+	{
+		HEALTH += inc;	
+	}
+	
+	public static int getLives() {
+		return LIVES;
+	}
+
+	public static String getLivesString() {
+		return Integer.toString(LIVES);
+	}
+
+	public static void resetLives()
+	{
+		LIVES = 0; 
+	}
+	
+	public static void setLives(int newLives)
+	{
+		LIVES = newLives;
+	}
+
+	public static void incLives(int inc)
+	{
+		LIVES += inc;	
+	}
+	
 	public static int getScore2() {
 		return SCORE2;
 	}

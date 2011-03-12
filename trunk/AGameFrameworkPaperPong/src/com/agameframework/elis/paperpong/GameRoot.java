@@ -56,40 +56,4 @@ public class GameRoot extends GameNode{
 		//You can add stuff here but don't have to (not recommended)
 	}
 
-
-	//	public void playerOneScore()
-	//	{
-	//		if(mWinner){return;}
-	//		playerOneScore++;
-	//		SoundEffectPlayer.play("score");
-	//		if(playerOneScore >= 9)
-	//		{
-	//			mWinner = true;	
-	//			remove(mBall);
-	//			mBall=null;
-	//		}
-	//		else
-	//		{ 
-	//
-	//			resetBall();
-	//		}
-	//	}
-	//
-	//	public void playerTwoScore()
-	//	{
-	//		if(mWinner){return;}
-	//		playerTwoScore++;
-	//		SoundEffectPlayer.play("score");
-	//		if(playerTwoScore >= 9)
-	//		{
-	//			mWinner = true;	
-	//			remove(mBall);
-	//			mBall=null;
-	//		}
-	//		else
-	//		{
-	//			//TODO give serve.
-	//			resetBall();
-	//		}
-	//	}
 }// end of class

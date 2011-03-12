@@ -11,10 +11,9 @@ import com.agameframework.settings.GameSettings;
  *
  * @author Elis - Email: Elisedlund@gmail.com - Date: 11 mar 2011
  */
-public class ScoreText extends GameNode{
+public class ScoreText extends LabeledNumbers{
 
-	protected GameNode mNumbers;
-	protected int lastScore = 0;
+	private int lastScore = 0;
 	private int mNr = 1;
 
 	public ScoreText(int fontResourceID) {
@@ -32,9 +31,9 @@ public class ScoreText extends GameNode{
 		mNr = oneOrTwo;
 	}
 	
+	
 	@Override
-	public void render(GL10 gl)
-	{
+	protected void updateNumbers() {
 		if(mNr == 1)
 		{
 			if (lastScore != GameSettings.getScore())
@@ -57,19 +56,5 @@ public class ScoreText extends GameNode{
 		{
 			Debug.warning("Only score for 1 and 2 exist");
 		}
-		mNumbers.setX(mRight + mNumbers.getWidth()/2);
-		mNumbers.setY(getY());
-		super.render(gl);
-		mNumbers.render(gl);
-	}
-
-	public float getWidthWithNumbers()
-	{
-		return super.getWidth() + mNumbers.getWidth();
-	}
-
-	public GameNode getNumberNode()
-	{
-		return mNumbers;	
 	}
 }
