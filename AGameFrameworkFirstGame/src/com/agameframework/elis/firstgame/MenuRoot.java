@@ -1,6 +1,4 @@
-package com.agameframework.elis.paperpong;
-
-import javax.microedition.khronos.opengles.GL10;
+package com.agameframework.elis.firstgame;
 
 import com.agameframework.Game;
 import com.agameframework.Loader;
@@ -22,11 +20,19 @@ import com.agameframework.object.GameNode;
 public class MenuRoot extends GameNode implements ILoadable{
 
 	private static String[] menuStrings = {
-			"Start game",
-			"Update",
-			"More games",
-			"Mail developer",
-			"Quit game"};
+		Game.string(R.string.start_game),
+		Game.string(R.string.update),
+		Game.string(R.string.more_games),
+		Game.string(R.string.mail_developer),
+		Game.string(R.string.quit_game)
+		};
+	
+	private static String[] gameStrings = {
+		Game.string(R.string.label_score),
+		Game.string(R.string.label_highscore),
+		Game.string(R.string.touch_to_restart),
+		};
+	
 	/**
 	 * Load textures and sounds here.
 	 * you can also create game stuff here.
@@ -39,7 +45,8 @@ public class MenuRoot extends GameNode implements ILoadable{
 		Loader.loadSound(R.raw.class.getFields());//load all resources in raw.
 		//you can always use the loader to load just specific media. if your not lazy.
 		
-		Loader.loadText(menuStrings, R.drawable.font_arial_black_shadow);
+		Loader.loadText(menuStrings, R.drawable.font_arial_white);
+		Loader.loadText(gameStrings, R.drawable.font_arial_white);
 	}//end of load()
 
 	@Override 
@@ -48,13 +55,13 @@ public class MenuRoot extends GameNode implements ILoadable{
 		Menu menu = new Menu(
 				menuStrings, 
 				new IEvent[]{
-						new ChangeStateEvent(new GameRoot()), //TODO 
+						new ChangeStateEvent(new GameRoot()),
 						new CheckForUpdateEvent(),
 						new SearchForPackageEvent(),
 						new SendMailEvent(),
 						new QuitGameEvent()
 						},
-						new SoundAndVibrateEvent(R.raw.pong,100));
+						new SoundAndVibrateEvent(R.raw.snd_poing,100));//effect on release.
 		menu.setXY(Game.getCenterX(), Game.getCenterY());
 		menu.setLineSpace(10);
 		menu.setScale(1.5f);
@@ -62,18 +69,4 @@ public class MenuRoot extends GameNode implements ILoadable{
 		add(menu);
 	}
 
-	@Override
-	public void update()
-	{
-		super.update();
-		//You can add stuff here but don't have to (not recommended)
-	}
-
-	@Override
-	public void render(GL10 gl) {
-		super.render(gl);
-		//You can add stuff here but don't have to (not recommended)
-	}
-
-	
 }// end of class

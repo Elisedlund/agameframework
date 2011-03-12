@@ -210,7 +210,7 @@ public class Game extends Activity {
 		GameEngine.sGameThread.mSyncEventsList.add(event);
 	}
 
-	public static String findString(int stringID)
+	public static String string(int stringID)
 	{
 		return instance.getString(stringID);
 	}

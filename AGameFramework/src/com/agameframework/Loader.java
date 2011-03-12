@@ -8,7 +8,6 @@ import com.agameframework.texture.TextureHandler;
 
 public class Loader {
 
-
 	public static void loadTexture(int resourceID)
 	{
 		TextureHandler.loadTexture(resourceID);
@@ -31,10 +30,8 @@ public class Loader {
 			try {
 				TextureHandler.loadTexture(fields[i].getInt(null));
 			} catch (IllegalArgumentException e) { 
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -62,10 +59,8 @@ public class Loader {
 			try {
 				SoundEffectPlayer.load(fields[i].getInt(null));
 			} catch (IllegalArgumentException e) { 
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -79,6 +74,20 @@ public class Loader {
 		for(int i = 0 ; i<text.length;i++)
 		{
 			TextureHandler.loadStaticTextTexture(fontResourceID, text[i]);
+		}
+	}
+
+	public static void loadText(Field[] fields, int fontResourceID) {
+		int size = fields.length;
+		for(int i=0; i<size ; i++)
+		{
+			try {
+				TextureHandler.loadStaticTextTexture(fontResourceID, (String) fields[i].get(null));
+			} catch (IllegalArgumentException e) { 
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

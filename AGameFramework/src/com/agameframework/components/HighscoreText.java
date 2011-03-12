@@ -10,32 +10,26 @@ import com.agameframework.settings.GameSettings;
  *
  * @author Elis - Email: Elisedlund@gmail.com - Date: 11 mar 2011
  */
-public class HighscoreText extends GameNode{
+public class HighscoreText extends LabeledNumbers{
 
-	protected GameNode mNumbers;
-
-	public HighscoreText(String scoreLabel,int fontResourceID) {
-		super(scoreLabel);
+	
+	public HighscoreText(int fontResourceID) {
+		super();
+		mNumbers = new GameNode(GameSettings.getHighscoreString(),fontResourceID);
+	}
+	
+	public HighscoreText(String highscoreLabel,int fontResourceID) {
+		super(highscoreLabel);
 		mNumbers = new GameNode(GameSettings.getHighscoreString(),fontResourceID);
 	}
 
 	@Override
-	public void render(GL10 gl)
-	{
+	protected void updateNumbers() {
 		if (GameSettings.setIfHighscore())
 		{
 			//TODO do event on highscore. once? 
 			mNumbers.setText(GameSettings.getHighscoreString());
-		}
-		mNumbers.setX(mRight + mNumbers.getWidth()/2);
-		mNumbers.setY(getY());
-		super.render(gl);
-		mNumbers.render(gl);
-	}
-	
-	public GameNode getNumberNode()
-	{
-		return mNumbers;	
+		}	
 	}
 
 }

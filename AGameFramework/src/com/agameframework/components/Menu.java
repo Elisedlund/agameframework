@@ -3,16 +3,10 @@ package com.agameframework.components;
 import java.util.ArrayList;
 
 import com.agameframework.Game;
-import com.agameframework.event.AddUpdatableEvent;
 import com.agameframework.event.CompositeEvent;
-import com.agameframework.event.RemoveEvent;
-import com.agameframework.input.components.DoEventOnTouchMove;
 import com.agameframework.input.components.DoEventOnTouchUp;
 import com.agameframework.interfaces.IEvent;
-import com.agameframework.interfaces.IRemovable;
 import com.agameframework.object.GameNode;
-import com.agameframework.object.Updatable;
-import com.agameframework.updatables.GrowShrinkToUpdatable;
 
 
 public class Menu extends GameNode{
@@ -26,7 +20,7 @@ public class Menu extends GameNode{
 		int size = strings.length;
 		for(int i=0; i<size ;i++)
 		{
-			add(strings[i],new CompositeEvent(events[i],pressEvent));
+			addMenuItem(strings[i],new CompositeEvent(events[i],pressEvent));
 		}
 		setXY(Game.getCenterX(),Game.getCenterY());
 	}
@@ -36,14 +30,14 @@ public class Menu extends GameNode{
 		int size = strings.length;
 		for(int i=0; i<size ;i++)
 		{
-			add(strings[i],events[i]);
+			addMenuItem(strings[i],events[i]);
 		}
 		setXY(Game.getCenterX(),Game.getCenterY());
 	}
 
 
 
-	public void add(String str, IEvent event)
+	public void addMenuItem(String str, IEvent event)
 	{
 
 		GameNode node = new GameNode(str);
