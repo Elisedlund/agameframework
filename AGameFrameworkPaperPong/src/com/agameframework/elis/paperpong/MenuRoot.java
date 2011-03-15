@@ -39,7 +39,7 @@ public class MenuRoot extends GameNode implements ILoadable{
 		Loader.loadSound(R.raw.class.getFields());//load all resources in raw.
 		//you can always use the loader to load just specific media. if your not lazy.
 		
-		Loader.loadText(menuStrings, R.drawable.font_arial_black_shadow);
+		Loader.loadText(menuStrings, R.drawable.font_arial_white);
 	}//end of load()
 
 	@Override 
@@ -58,7 +58,9 @@ public class MenuRoot extends GameNode implements ILoadable{
 		menu.setXY(Game.getCenterX(), Game.getCenterY());
 		menu.setLineSpace(10);
 		menu.setScale(1.5f);
+		menu.setColor(64/255f, 64/255f, 64/255f);
 		menu.effectGrow();
+		menu.setShadow(0.4f, 5f, -5f);
 		add(menu);
 	}
 

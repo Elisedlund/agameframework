@@ -2,6 +2,7 @@ package com.agameframework.elis.paperpong;
 
 import com.agameframework.Game;
 import com.agameframework.components.MotionBlur;
+import com.agameframework.components.Shadow;
 import com.agameframework.conditions.YLargerThenCondition;
 import com.agameframework.conditions.YSmallerThenCondition;
 import com.agameframework.event.CompositeEvent;
@@ -65,7 +66,8 @@ public class Ball extends GameNode {
 		addUpdateable(new EventUpdatable(condEvent2));
 
 	
-		add(new MotionBlur(this,-0.8f, 0.01f));
+		add(new MotionBlur(-0.8f, 0.01f));
+	
 
 	}	
 }

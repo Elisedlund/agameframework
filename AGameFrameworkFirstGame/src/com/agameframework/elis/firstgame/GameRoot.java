@@ -2,13 +2,13 @@ package com.agameframework.elis.firstgame;
 
 import com.agameframework.Game;
 import com.agameframework.components.HighscoreText;
+import com.agameframework.components.LabeledNumbers;
 import com.agameframework.components.MotionBlur;
 import com.agameframework.components.ScoreText;
 import com.agameframework.event.ChangeStateEvent;
 import com.agameframework.event.CompositeEvent;
 import com.agameframework.event.InvertXMotionEvent;
 import com.agameframework.event.InvertYMotionEvent;
-import com.agameframework.event.RepeatEvent;
 import com.agameframework.event.ScoreIncEvent;
 import com.agameframework.event.SoundAndVibrateEvent;
 import com.agameframework.input.components.DoEventOnTouchDown;
@@ -35,9 +35,10 @@ public class GameRoot extends GameNode{
 		add(highscore);
 
 		//add score
-		GameNode score = new ScoreText(scoreLabel, R.drawable.font_arial_white);
+		LabeledNumbers score = new ScoreText(scoreLabel, R.drawable.font_arial_white);
 		score.setXY(Game.getCenterX(), Game.getCenterY());
 		score.setScale(2f);
+		score.getNumbers().setScale(2f);
 		MovementUpdatable mu = new MovementUpdatable();
 		mu.mXMotion = 5;
 		mu.mYMotion = 5;
@@ -45,7 +46,7 @@ public class GameRoot extends GameNode{
 		score.addUpdateable(new StayOnScreenUpdatable(
 				new InvertXMotionEvent(mu),
 				new InvertYMotionEvent(mu)));	
-		score.add(new MotionBlur(score,-0.7f, 0.05f));
+		score.add(new MotionBlur(-0.7f, 0.05f));
 		add(score);
 		
 		//pressing for scoring.

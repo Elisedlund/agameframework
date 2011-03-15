@@ -66,6 +66,7 @@ public class MenuRoot extends GameNode implements ILoadable{
 		menu.setLineSpace(10);
 		menu.setScale(1.5f);
 		menu.effectGrow();
+		menu.setColor(0f, 1f, 0f);
 		add(menu);
 	}
 
