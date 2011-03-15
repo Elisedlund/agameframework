@@ -23,7 +23,6 @@ public class Rectangle{
 	public Rectangle(){}
 
 
-
 	/**
 	 * Creates a new rectangle. Note: no range
 	 * checking is performed, so the caller must ensure that left <= right and

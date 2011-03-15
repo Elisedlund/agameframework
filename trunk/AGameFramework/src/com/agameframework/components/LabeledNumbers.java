@@ -14,16 +14,6 @@ public abstract class LabeledNumbers extends GameNode{
 	protected GameNode mNumbers;
 
 
-//	public LabeledNumber(int fontResourceID) {
-//		super();
-//		mNumbers = new GameNode("0",fontResourceID);
-//	}
-//
-//	public LabeledNumber(String label, int fontResourceID) {
-//		super(label);
-//		mNumbers = new GameNode("0",fontResourceID);
-//	}
-	
 	public LabeledNumbers()
 	{
 		super();

@@ -7,50 +7,46 @@ import com.agameframework.updatables.FadeInOutUpdatable;
 public class MotionBlur extends GameNode{
 
 	private GameNode mNodeToBlur = null;
+	
 	private int currentBlurCount = 0;
-
 	private int maxBlurCount = 10;
+	
 	private float mFadeTo = 0.0f;
 	private float mRelativStart = -0.7f;
 	private float mFadeSpeed = 0.05f;
 
-	public MotionBlur(GameNode nodeToBlur,float relativStart,float fadespeed, float fadeTo)
+	public MotionBlur(float relativStart,float fadespeed, float fadeTo)
 	{
-		mNodeToBlur = nodeToBlur;
-		mRelativStart= relativStart;
+		mRelativStart = relativStart;
 		mFadeTo = fadeTo;
 		mFadeSpeed = fadespeed;
-		maxBlurCount = (int) ((nodeToBlur.mOpacity+mRelativStart-mFadeTo) / mFadeSpeed);
 	}
 	
-	public MotionBlur(GameNode nodeToBlur,float relativStart,float fadespeed)
+	public MotionBlur(float relativStart,float fadespeed)
 	{
-		mNodeToBlur = nodeToBlur;
-		mRelativStart= relativStart;
+		mRelativStart = relativStart;
 		mFadeSpeed = fadespeed;
-		maxBlurCount = (int) ((nodeToBlur.mOpacity+mRelativStart-mFadeTo) / mFadeSpeed);
 	}
 	
-	public MotionBlur(GameNode nodeToBlur,float fadespeed)
+	public MotionBlur(float fadespeed)
 	{
-		mNodeToBlur = nodeToBlur;
 		mFadeSpeed = fadespeed;
-		maxBlurCount = (int) ((nodeToBlur.mOpacity+mRelativStart-mFadeTo) / mFadeSpeed);
 	}
 	
-	public MotionBlur(GameNode nodeToBlur)
+	@Override
+	public void init()
 	{
-		mNodeToBlur = nodeToBlur;
-		maxBlurCount = (int) ((nodeToBlur.mOpacity+mRelativStart-mFadeTo) / mFadeSpeed);
+		maxBlurCount = (int) ((mParent.mOpacity+mRelativStart-mFadeTo) / mFadeSpeed);
+		mNodeToBlur = mParent; //quick fix.
 	}
-
+	
 	public void update()
 	{
 		super.update();
 		if(currentBlurCount < maxBlurCount)
 		{
 			currentBlurCount++;
-			mNodeToBlur.add(new Fade());
+			mParent.add(new Fade());
 		}
 	}
 	
@@ -71,4 +67,4 @@ public class MotionBlur extends GameNode{
 		}
 	}
 
-}
+}//end of class

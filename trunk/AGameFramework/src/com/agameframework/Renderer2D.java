@@ -9,13 +9,13 @@ import com.agameframework.debug.Debug;
 
 
 public class Renderer2D extends AbstractRenderer implements GLSurfaceView.Renderer{
-	
+
 	public Renderer2D() {
 		super();	
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-		
+
 		Debug.print("Renderer onSurfaceCreated");
 
 		gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_FASTEST);
@@ -38,7 +38,7 @@ public class Renderer2D extends AbstractRenderer implements GLSurfaceView.Render
 
 		gl.glTexEnvx(GL10.GL_TEXTURE_ENV, GL10.GL_TEXTURE_ENV_MODE, GL10.GL_MODULATE);
 
-		
+
 		gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
 
 		info(gl);
@@ -60,8 +60,8 @@ public class Renderer2D extends AbstractRenderer implements GLSurfaceView.Render
 	}
 
 	public void onSurfaceChanged(GL10 gl, int width, int height) {
-		
-		
+
+
 		float scaleX = (float)width / Game.getWidth();
 		float scaleY =  (float)height / Game.getHeight();
 		final int viewportWidth = (int)(Game.getWidth() * scaleX);
