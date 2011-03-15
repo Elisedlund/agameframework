@@ -58,6 +58,8 @@ public class TODO {
 	//DONE AccelerometerMovement.add(gamenode). static add func? private constructor? in all input.
 	//DONE Set game size in Settings.
 	
+	
+	//TODO remove dynamic text? and replace them with single char static text list?(only numbers?)
 	//TODO shadow and motionblur dont work on dynamic text like score/health ect.
 	//TODO croping texture.? do crop in .getTextureName().
 	//TODO gameNode.add(prototypefactory) gets a instance form a prototype and adds it.
