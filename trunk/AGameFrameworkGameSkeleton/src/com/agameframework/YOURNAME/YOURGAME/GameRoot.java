@@ -16,7 +16,7 @@ import com.agameframework.updatables.FadeInOutUpdatable;
 public class GameRoot extends GameNode implements ILoadable{
 
 	//load a string from string.xml (localized)
-	private String appNameString = Game.findString(R.string.app_name);
+	private String appNameString = Game.string(R.string.app_name);
 	
 	/**
 	 * Load textures and sounds here. you should also static text textures here 

@@ -2,6 +2,7 @@ package com.agameframework.elis.paperpong;
 
 import com.agameframework.Game;
 import com.agameframework.components.MotionBlur;
+import com.agameframework.components.Shadow;
 import com.agameframework.object.GameNode;
 
 public class Paddle extends GameNode{
@@ -17,7 +18,8 @@ public class Paddle extends GameNode{
 		setXY(x,y);
 		mGoalX=x; 
 		mGoalY=y; 
-		add(new MotionBlur(this,-0.8f, 0.04f));
+		add(new MotionBlur(-0.8f, 0.04f));
+
 	}
 
 
