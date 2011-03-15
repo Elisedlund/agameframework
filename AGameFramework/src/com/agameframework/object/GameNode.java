@@ -5,12 +5,10 @@ import java.util.ArrayList;
 import javax.microedition.khronos.opengles.GL10;
 
 import com.agameframework.debug.Debug;
-import com.agameframework.interfaces.ICondition;
 import com.agameframework.interfaces.IRemovable;
 import com.agameframework.interfaces.IRenderable;
 import com.agameframework.interfaces.ITexture;
 import com.agameframework.interfaces.IUpdatable;
-import com.agameframework.interfaces.IUpdatableAndRenderable;
 import com.agameframework.interfaces.IUpdatableAndRenderableAndRemovable;
 import com.agameframework.settings.GameSettings;
 import com.agameframework.texture.TextureHandler;
@@ -52,11 +50,11 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 		super(text);
 	}
 
-	public void addUpdateable(IUpdatable obj)
-	{
-		createUpdateListIfItDontExist();
-		mUpdateList.add(obj);
-	}
+//	public void addUpdateable(IUpdatable obj)
+//	{
+//		createUpdateListIfItDontExist();
+//		mUpdateList.add(obj);
+//	}
 	public void addUpdateable(Updatable upd)
 	{
 		upd.mParent = this;
@@ -65,7 +63,7 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 		mUpdateList.add(upd);
 	}
 
-	public void removeUpdateable(IUpdatable obj)
+	public void removeUpdateable(IUpdatable obj) // -I
 	{
 		createRemoveListIfItDontExist();
 		mRemoveUpdatableList.add(obj);
@@ -100,22 +98,6 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 		mRenderableList.add(obj);
 		createUpdateListIfItDontExist();
 		mUpdateList.add(obj);
-	}
-
-	//	public void add(IUpdatableAndRenderable obj)
-	//	{
-	//		createRenderableListIfItDontExist();
-	//		mRenderableList.add(obj);
-	//		createUpdateListIfItDontExist();
-	//		mUpdateList.add(obj);
-	//	}
-
-	public void remove(GameNode obj)
-	{
-		createRemoveListIfItDontExist();
-		mRemoveUpdatableList.add(obj);//remove later.
-		createRemoveRenderableListIfItDontExist();
-		mRemoveRenderableList.add(obj);//remove later.
 	}
 
 	@Override
@@ -189,8 +171,18 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 		mRemovableList.add(r);
 	}
 
+	public void remove(GameNode obj)
+	{
+		createRemoveListIfItDontExist();
+		mRemoveUpdatableList.add(obj);//remove later.
+		createRemoveRenderableListIfItDontExist();
+		mRemoveRenderableList.add(obj);//remove later.
+	}
+
 	public void remove()
 	{
+		
+		//removes removables. like input.
 		if(mRemovableList != null) {
 			int size = mRemovableList.size();
 			for (int i = 0; i != size; i++) 
@@ -199,6 +191,7 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 			}
 		}
 
+		//removes all children
 		if(mUpdateList != null) {
 			int size = mUpdateList.size();
 			for (int i = 0; i != size; i++) 
@@ -210,7 +203,6 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 				}
 			}
 		}
-
 
 		if(mParent != null) //if not root.
 		{
@@ -264,18 +256,14 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 	}
 
 	//TODO 
-	public void message(String massage)
-	{
-
-	}
-
-	public void message(String massage, ICondition condition)
-	{
-
-	}
+//	public void message(String massage)
+//	{
+//	}
+//
+//	public void message(String massage, ICondition condition)
+//	{
+//	}
 
 	public void init()
-	{
-
-	}
+	{}
 }
