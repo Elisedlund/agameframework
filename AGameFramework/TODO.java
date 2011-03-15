@@ -58,6 +58,11 @@ public class TODO {
 	//DONE AccelerometerMovement.add(gamenode). static add func? private constructor? in all input.
 	//DONE Set game size in Settings.
 	
+	//TODO shadow and motionblur dont work on dynamic text like score/health ect.
+	//TODO croping texture.? do crop in .getTextureName().
+	//TODO gameNode.add(prototypefactory) gets a instance form a prototype and adds it.
+	//TODO separate numbers from LabeledNumbers.
+	//TODO motionblur parent istead of choosen one. less arguments.
 	//TODO move trackball handling to GameInput press up down ect.
 	//TODO Shadow point to another nodes texture an make all black and render with offset.
 	//TODO rainbowColorizer.

@@ -41,7 +41,6 @@ public class Menu extends GameNode{
 	{
 
 		GameNode node = new GameNode(str);
-	
 		DoEventOnTouchUp.add(node,event);
 		mList.add(node);
 		add(node);
@@ -108,23 +107,50 @@ public class Menu extends GameNode{
 		for(int i=0;i<size;i++)
 		{
 			mList.get(i).add(new GrowOnTouchEffect());
+
+			//			float scale = node.getScaleX();
+			//			float speed = scale/100;
+			//			Updatable shrink = new GrowShrinkToUpdatable(-speed,-0.5f);
+			//			IEvent addShrink = new AddUpdatableEvent(shrink,node);
+			//			Updatable grow = new GrowShrinkToUpdatable(addShrink,speed, 0.5f);
+			//			IEvent addGrow = new AddUpdatableEvent(grow,node);
+			//			
+			//			IEvent remove;
+			//			CompositeEvent comp = new CompositeEvent();
+			//			IRemovable removeable = DoEventOnTouchMove.add(node,comp);
+			//			comp.add(addGrow);
+			//			comp.add(new RemoveEvent(removeable));
+		}
+	}
+	
+	public void setColor(float red, float green, float blue)
+	{
+		int size = mList.size();
+		for(int i=0;i<size;i++)
+		{
+			mList.get(i).setColor(red, green, blue);
+		}
+	}
+	
+	public void setShadow(float opacity,float offsetX,float offsetY)
+	{
+		int size = mList.size();
+		for(int i=0;i<size;i++)
+		{
 			
-//			float scale = node.getScaleX();
-//			float speed = scale/100;
-//			Updatable shrink = new GrowShrinkToUpdatable(-speed,-0.5f);
-//			IEvent addShrink = new AddUpdatableEvent(shrink,node);
-//			Updatable grow = new GrowShrinkToUpdatable(addShrink,speed, 0.5f);
-//			IEvent addGrow = new AddUpdatableEvent(grow,node);
-//			
-//			IEvent remove;
-//			CompositeEvent comp = new CompositeEvent();
-//			IRemovable removeable = DoEventOnTouchMove.add(node,comp);
-//			comp.add(addGrow);
-//			comp.add(new RemoveEvent(removeable));
+			Shadow shadow = new Shadow();
+			shadow.mOpacity = opacity;
+			shadow.setOffset(offsetX, offsetY);
+			mList.get(i).add(shadow); 
 		}
 	}
 	
 	
+	public ArrayList<GameNode> getList()
+	{
+		return mList;
+	}
+
 
 	@Override 
 	public void setXY(float x,float y)

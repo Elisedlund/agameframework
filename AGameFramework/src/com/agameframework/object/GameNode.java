@@ -40,12 +40,12 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 
 	public GameNode(String text,ITexture texture)
 	{
-		super(texture,text);//TODO swap arguments
+		super(text,texture);
 	}
 
 	public GameNode(String text, int resourceID)
 	{
-		super(TextureHandler.getTexture(resourceID),text);//TODO swap arguments
+		super(text,TextureHandler.getTexture(resourceID));
 	}
 
 	public GameNode(String text) {
@@ -102,13 +102,13 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 		mUpdateList.add(obj);
 	}
 
-//	public void add(IUpdatableAndRenderable obj)
-//	{
-//		createRenderableListIfItDontExist();
-//		mRenderableList.add(obj);
-//		createUpdateListIfItDontExist();
-//		mUpdateList.add(obj);
-//	}
+	//	public void add(IUpdatableAndRenderable obj)
+	//	{
+	//		createRenderableListIfItDontExist();
+	//		mRenderableList.add(obj);
+	//		createUpdateListIfItDontExist();
+	//		mUpdateList.add(obj);
+	//	}
 
 	public void remove(GameNode obj)
 	{
@@ -120,11 +120,7 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 
 	@Override
 	public void render(GL10 gl) {
-		if(getTexture() != null) //TODO 
-		{
-			super.render(gl);//render itself first.
-		}
-		if(mRenderableList == null) {return;}
+		//if(mRenderableList == null) {return;}
 
 		if(mRemoveRenderableList != null && mRemoveRenderableList.size() != 0)
 		{
@@ -135,11 +131,17 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 			}
 			mRemoveRenderableList.clear();
 		}
+		if(mRenderableList != null)
+		{
+			int size = mRenderableList.size();
+			for (int i = 0; i != size; i++) {
+				mRenderableList.get(i).render(gl);
+			}
+		}
 
-
-		int size = mRenderableList.size();
-		for (int i = 0; i != size; i++) {
-			mRenderableList.get(i).render(gl);
+		if(getTexture() != null) //TODO 
+		{
+			super.render(gl);//render itself first.
 		}
 	}
 
@@ -271,9 +273,9 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 	{
 
 	}
-	
+
 	public void init()
 	{
-		
+
 	}
 }

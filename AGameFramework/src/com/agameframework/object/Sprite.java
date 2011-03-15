@@ -8,12 +8,17 @@ import com.agameframework.interfaces.ITexture;
 import com.agameframework.text.Text;
 import com.agameframework.texture.TextureHandler;
 
-public class Sprite extends State implements IRenderable{
+public class Sprite extends Rectangle implements IRenderable{
 
-	//	private float mDepth = 0; //TODO MAKE USE OF.
 	private ITexture mTexture;
 
 	private Text mText; // Only for dynamic text.
+//	public float mRotationZ; //TODO use.
+	
+	public float mOpacity = 1f;
+	private float mRed = 1f;
+	private float mGreen = 1f;
+	private float mBlue = 1f;
 
 
 	public Sprite()
@@ -30,46 +35,45 @@ public class Sprite extends State implements IRenderable{
 		this(TextureHandler.getTexture(text));
 	}
 
-	public Sprite(ITexture texture, String text)
+	public Sprite(String text,ITexture texture)
 	{
+		super();
 		this.mTexture = texture;
 		setText(text);
 	}
 
-	public Sprite(int resourceID, String text)
-	{
-		this(TextureHandler.getTexture(resourceID),text);
-	}
 
 	@Override
 	public void render(GL10 gl) {
-		if(mOpacity != 1f)
-		{
-			gl.glTexEnvx(GL10.GL_TEXTURE_ENV, GL10.GL_TEXTURE_ENV_MODE, GL10.GL_MODULATE);
-			gl.glColor4f(1f, 1f, 1f, mOpacity);
-		}
+		
+		//TODO only if mRed, mGreen, mBlue, mOpacity have changed form 1? '
+		//TODO do a preformance test.
+		gl.glTexEnvx(GL10.GL_TEXTURE_ENV, GL10.GL_TEXTURE_ENV_MODE, GL10.GL_MODULATE);
+		gl.glColor4f(mRed, mGreen, mBlue, mOpacity);
+		
 		TextureHandler.bindTextureName(mTexture.getTextureName());
 
 		if(mText == null) //if not text.
 		{
 			//TODO transformations. rot . skew.
 
-			//TODO performance.  fix in rectangle? 
-			float x = mCenterX-(mTexture.getTextureWidth()*mScaleX)/2;
-			float y = mCenterY-(mTexture.getTextureHeight()*mScaleY)/2;
-			((GL11Ext) gl).glDrawTexfOES(x,y, 0, mTexture.getTextureWidth()*mScaleX, mTexture.getTextureHeight()*mScaleY);
+			float width = mTexture.getTextureWidth()*mScaleX;
+			float height = mTexture.getTextureHeight()*mScaleY;
+			float x = mCenterX-(width)/2;
+			float y = mCenterY-(height)/2;
+			((GL11Ext) gl).glDrawTexfOES(x,y, 0, width, height);
 		}
 		else // if render dynamicText.
 		{
 			mText.render(gl,mLeft,mBottom,mScaleX,mScaleY);
 		}
-		gl.glColor4f(1f, 1f, 1f, 1f);
 	}
 
 	public void setTexture(ITexture texture) {
 		this.mTexture = texture;
-		setWidth(texture.getImageWidth());
-		setHeight(texture.getImageHeight());
+		
+		setWidth(texture.getImageWidth() * mScaleX);
+		setHeight(texture.getImageHeight() * mScaleY);
 	}
 
 	public void setTexture(int resourceID)
@@ -90,16 +94,16 @@ public class Sprite extends State implements IRenderable{
 	{
 		mText = new Text();
 		mText.setText(text);
-		setWidth(mText.getTextWidth());
-		setHeight(mText.getTextHeight());
+//		Debug.print("scale: " +mScaleX +" , " + mScaleY+ " : height:" +  mText.getTextHeight()+"set: " + (mText.getTextHeight() * mScaleY));
+		setWidth(mText.getTextWidth() * mScaleX);
+		setHeight(mText.getTextHeight() * mScaleY);
 	}
 
-	//	public void setDepth(float mDepth) {
-	//		this.mDepth = mDepth;
-	//	}
-	//
-	//	public float getDepth() {
-	//		return mDepth;
-	//	}
+	public void setColor(float red, float green, float blue)
+	{
+		mRed = red;
+		mGreen = green;
+		mBlue = blue;
+	}
 
 } // end of class
