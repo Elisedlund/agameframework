@@ -15,11 +15,11 @@ public class SetRandomColorEvent implements IEvent{
 	@Override
 	public void invokeEvent() 
 	{
-		mSprite.setColor((float)Math.random(), (float)Math.random(), (float)Math.random());
+		mSprite.setRandomColor();
 	}
 
 	public static void invoke(Sprite sprite)
 	{
-		sprite.setColor((float)Math.random(), (float)Math.random(), (float)Math.random());
+		sprite.setRandomColor();
 	}
 }

@@ -20,7 +20,7 @@ public class Renderer2D extends AbstractRenderer implements GLSurfaceView.Render
 
 		gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_FASTEST);
 
-		gl.glClearColor(mRed, mGreen, mBlue, 1f);
+		gl.glClearColor(mRed, mGreen, mBlue, 1f);//TODO alpha? blurry?
 		gl.glShadeModel(GL10.GL_FLAT); //TODO remove?
 		gl.glEnable(GL10.GL_BLEND);
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);

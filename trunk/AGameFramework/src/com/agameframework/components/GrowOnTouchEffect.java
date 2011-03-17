@@ -28,14 +28,15 @@ public class GrowOnTouchEffect extends GameNode{
 //		IEvent restart = new NullEvent();
 		IEvent restart = new CallMethodEvent(this, "init");
 		
-		Updatable shrink = new GrowShrinkToUpdatable(restart,-speed,-0.5f); //shrink
-		IEvent addShrink = new AddUpdatableEvent(shrink,mParent);
-		
-		Updatable grow = new GrowShrinkToUpdatable(addShrink,speed, 0.5f); //grow
-		IEvent addGrow = new AddUpdatableEvent(grow,mParent);
+//		Updatable shrink = new GrowShrinkToUpdatable(restart,-speed,-0.5f); //shrink
+//		IEvent addShrink = new AddUpdatableEvent(shrink,mParent);
+//		Updatable grow = new GrowShrinkToUpdatable(addShrink,speed, 0.5f); //grow
+//		
+		Updatable growshrink = new GrowShrinkToUpdatable(restart, speed, -0.01f, 0.5f, 2);
+		IEvent addGrowShrink = new AddUpdatableEvent(growshrink,mParent);
 		
 		CompositeEvent comp = new CompositeEvent();
-		comp.add(addGrow);
+		comp.add(addGrowShrink);
 		comp.add(new VibrateEvent(25));
 		IRemovable removeable = DoEventOnTouchMove.add(mParent,comp);
 		comp.add(new RemoveEvent(removeable)); //so it only can be touched once.

@@ -1,38 +1,18 @@
 package com.agameframework.updatables;
 
-import com.agameframework.object.Updatable;
-import com.agameframework.utils.PulsatingFloat;
 
-public class PulsatingOpacityUpdatable extends Updatable{
-
-	private PulsatingFloat mPulse;
-
-	public PulsatingOpacityUpdatable(float startValue, float direction, float speed, float min, float max)
-	{
-
-		mPulse = new PulsatingFloat(startValue, direction, speed, min, max);
-	}
+public class PulsatingOpacityUpdatable extends FadeInOutUpdatable{
 
 	public PulsatingOpacityUpdatable(float speed, float min, float max)
 	{
-		mPulse = new PulsatingFloat(min, 1f, speed, min, max);
-	}
-	
-	public PulsatingOpacityUpdatable(float min, float max)
-	{
-		mPulse = new PulsatingFloat(min, 1f, 0.02f, min, max);
-	}
-	
-	@Override
-	public void update() {
-		mPulse.update();
-		mParent.mOpacity = mPulse.getCurrentValue();	
-		
+		super(speed, min, max, -1);
 	}
 
-	@Override
-	public void init() {
-		// TODO Auto-generated method stub
-		
+	public PulsatingOpacityUpdatable(float min, float max)
+	{
+		super(0.02f, min, max, -1);
 	}
+	
+	@Override
+	public void init() {}
 }

@@ -1,11 +1,9 @@
 package com.agameframework.elis.paperpong;
 
-import com.agameframework.Game;
-import com.agameframework.debug.Debug;
 import com.agameframework.event.RandomEvent;
 import com.agameframework.event.SoundAndVibrateEvent;
-import com.agameframework.interfaces.IUpdatable;
 import com.agameframework.object.CollisionHelper;
+import com.agameframework.object.Updatable;
 
 
 //TODO MUCH WORK LEFT, FIXXX
@@ -13,7 +11,7 @@ import com.agameframework.object.CollisionHelper;
  * @author Elis
  *
  */
-public class PaddleBallCollision implements IUpdatable {
+public class PaddleBallCollision extends Updatable {
  
 	private Ball mBall;
 	private Paddle mPaddle;
@@ -77,5 +75,11 @@ public class PaddleBallCollision implements IUpdatable {
 		//old motion matters.
 		mBall.mMovement.mXMotion = newXMotion + mBall.mMovement.mXMotion/2;	
 		sound.invokeEvent();
+	}
+
+	@Override
+	public void init() {
+		// TODO Auto-generated method stub
+		
 	}
 }

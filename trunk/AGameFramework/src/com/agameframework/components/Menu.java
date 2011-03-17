@@ -7,6 +7,7 @@ import com.agameframework.event.CompositeEvent;
 import com.agameframework.input.components.DoEventOnTouchUp;
 import com.agameframework.interfaces.IEvent;
 import com.agameframework.object.GameNode;
+import com.agameframework.updatables.RainbowUpdatable;
 
 
 public class Menu extends GameNode{
@@ -107,19 +108,15 @@ public class Menu extends GameNode{
 		for(int i=0;i<size;i++)
 		{
 			mList.get(i).add(new GrowOnTouchEffect());
-
-			//			float scale = node.getScaleX();
-			//			float speed = scale/100;
-			//			Updatable shrink = new GrowShrinkToUpdatable(-speed,-0.5f);
-			//			IEvent addShrink = new AddUpdatableEvent(shrink,node);
-			//			Updatable grow = new GrowShrinkToUpdatable(addShrink,speed, 0.5f);
-			//			IEvent addGrow = new AddUpdatableEvent(grow,node);
-			//			
-			//			IEvent remove;
-			//			CompositeEvent comp = new CompositeEvent();
-			//			IRemovable removeable = DoEventOnTouchMove.add(node,comp);
-			//			comp.add(addGrow);
-			//			comp.add(new RemoveEvent(removeable));
+		}
+	}
+	
+	public void effectRainbow()
+	{
+		int size = mList.size();
+		for(int i=0;i<size;i++)
+		{
+			mList.get(i).addUpdateable(new RainbowUpdatable(i/10f));
 		}
 	}
 	

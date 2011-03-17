@@ -14,7 +14,7 @@ public class Settings implements ISettings{
 		GameSettings.SHOW_FPS = true;//show possible updates per second.
 		GameSettings.DEVELOPER_MAIL = "elisedlund@gmail.com";//set an email to enable error reporter.
 
-		
+		Game.setColor(1f, 1f, 1f);
 		GameRoot game = new GameRoot(); //Creates the starting GameNode. 
 		Game.setLoader(game); //Sets the loader. Dont have to be the same as the GameNode(GameRoot)
 		Game.setGameRoot(game); //Sets the root GameNode

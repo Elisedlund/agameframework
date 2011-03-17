@@ -41,7 +41,5 @@ public class MovementUpdatable extends Updatable {
 
 	@Override
 	public void init() {
-		// TODO Auto-generated method stub
-		
 	}	
 }
