@@ -1,7 +1,5 @@
 package com.agameframework.elis.effects;
 
-import javax.microedition.khronos.opengles.GL10;
-
 import com.agameframework.Game;
 import com.agameframework.Loader;
 import com.agameframework.input.components.SimpleTouchMovement;

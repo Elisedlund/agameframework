@@ -105,5 +105,44 @@ public class Sprite extends Rectangle implements IRenderable{
 		mGreen = green;
 		mBlue = blue;
 	}
+	
+	
+	
+	public void setRed(float red)
+	{
+		mRed = red;
+	}
+	
+	public void setGreen(float green)
+	{
+		mGreen = green;
+	}
+	
+	public void setBlue(float blue)
+	{
+		mBlue = blue;
+	}
+	
+	public void incRed(float red)
+	{
+		mRed += red;
+	}
+	
+	public void incGreen(float green)
+	{
+		mGreen += green;
+	}
+	
+	public void incBlue(float blue)
+	{
+		mBlue += blue;
+	}
+	
 
+	public void setRandomColor()
+	{
+		mRed = (float) Math.random();
+		mGreen = (float) Math.random();
+		mBlue = (float) Math.random();
+	}
 } // end of class

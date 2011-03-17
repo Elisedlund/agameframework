@@ -5,58 +5,70 @@ import com.agameframework.interfaces.IUpdatable;
 public class PulsatingFloat implements IUpdatable{
 
 	private Float mCurrentValue;
-	private float mDirection;
 	private float mSpeed;
-	private float mMin;
-	private float mMax;
+	private float mMin = 0f;
+	private float mMax = 1f;
+	private boolean mDone = false;
+	private int mGoalPulseCount = -1;
+	private int mCurrentPulseCount = 0;
 
-	public PulsatingFloat(Float pulsingValue, float direction, float speed, float min, float max)
+
+	public PulsatingFloat(Float pulsingValue, float speed, float min, float max, int nrOfTimes)
 	{
 		this.mCurrentValue = pulsingValue;
-		this.mDirection = direction;
 		this.mSpeed = speed;
 		this.mMin = min;
 		this.mMax = max;
+		this.mGoalPulseCount = nrOfTimes;
 	}
-	
-	public PulsatingFloat(float direction, float speed, float min, float max)
+
+	public PulsatingFloat(Float pulsingValue, float speed, float min, float max)
 	{
-		this.mCurrentValue = new Float(0.5f);
-		this.mDirection = direction;
-		this.mSpeed = speed;
-		this.mMin = min;
-		this.mMax = max;
+		this(pulsingValue, speed, min, max,-1);
 	}
 	
+	public PulsatingFloat(float speed, float min, float max,int nrOfTimes)
+	{
+		this(min, speed, min, max, nrOfTimes);
+	}
+	
+	public PulsatingFloat(float speed, float min, float max)
+	{
+		this(min, speed, min, max, -1);
+	}
+
 	public void update()
 	{
+		mCurrentValue += mSpeed;
+
 		if (mCurrentValue <= mMin)
 		{
-			mDirection = 1;
+			mSpeed *= -1;
+			mCurrentPulseCount++;
+			if(mCurrentPulseCount == mGoalPulseCount) //if done
+			{
+				mDone = true;
+			}
+			if (mCurrentValue < mMin)
+			{
+				//TODO diff.
+				mCurrentValue = mMin;
+			}
 		}
 		if (mCurrentValue >= mMax)
 		{
-			mDirection = -1;
+			mSpeed *= -1;
+			mCurrentPulseCount++;
+			if(mCurrentPulseCount == mGoalPulseCount) //if done
+			{
+				mDone = true;
+			}
+			if (mCurrentValue > mMax)
+			{
+				//TODO diff.
+				mCurrentValue = mMax;
+			}
 		}
-
-		 mCurrentValue += mDirection * mSpeed;
-
-		if (mCurrentValue > mMax)
-		{
-			mCurrentValue = mMax;
-		}
-		else if (mCurrentValue < mMin)
-		{
-			mCurrentValue = mMin;
-		}
-	}
-	
-	public float getDirection() {
-		return mDirection;
-	}
-
-	public void setDirection(float direction) {
-		this.mDirection = direction;
 	}
 
 	public float getSpeed() {
@@ -89,5 +101,15 @@ public class PulsatingFloat implements IUpdatable{
 
 	public void setCurrentValue(Float currentValue) {
 		this.mCurrentValue = currentValue;
+	}
+
+	public float getDiff()
+	{
+		return mSpeed;
+	}
+	
+	public boolean isDone()
+	{
+		return mDone;
 	}
 }

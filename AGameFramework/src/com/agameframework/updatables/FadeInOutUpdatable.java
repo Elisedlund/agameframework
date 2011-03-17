@@ -1,88 +1,75 @@
 package com.agameframework.updatables;
 
 import com.agameframework.interfaces.IEvent;
-import com.agameframework.object.Updatable;
 
-public class FadeInOutUpdatable extends Updatable{
+public class FadeInOutUpdatable extends AbstractPulsatingUpdatable
+{	
 
-
-	private static final float DEFAULT_SPEED = 0.01f;
-	private static final float DEFAULT_FADE = 1f;
-
-	private float mFade;
-	private float mSpeed;
-	private float mCurrentFade = 0f;
-
-	private IEvent mEvent = null;
-
-	public FadeInOutUpdatable(IEvent event, float speed, float fadeValue)
+	public FadeInOutUpdatable(IEvent event,float speed, float relativValueMin, float relativValueMax, int nrOfTimes) 
 	{
-		this(speed,fadeValue);
-		mEvent = event;
+		super(event,speed, relativValueMin, relativValueMax, nrOfTimes);
+	}
+	
+	public FadeInOutUpdatable(float speed, float relativValueMin, float relativValueMax, int nrOfTimes) 
+	{
+		super(speed,relativValueMin,relativValueMax,nrOfTimes);
+	}
+	
+	public FadeInOutUpdatable(IEvent event, float speed, float relativValue, int nrOfTimes) 
+	{
+		super(event,speed,relativValue,nrOfTimes);
+	}
+	
+	public FadeInOutUpdatable(IEvent event, float speed, float relativValue) 
+	{
+		super(event,speed,relativValue);
+	}
+	
+	public FadeInOutUpdatable(float speed, float relativValue, int nrOfTimes) 
+	{
+		super(speed,relativValue,nrOfTimes);	
+	}
+	
+	public FadeInOutUpdatable(float speed, float relativValue) 
+	{
+		super(speed,relativValue);	
 	}
 
-	public FadeInOutUpdatable(float speed, float fadeValue)
+	public FadeInOutUpdatable(IEvent event,float relativValue, int nrOfTimes)
 	{
-		mSpeed = speed;
-		mFade = fadeValue;
+		super(event,relativValue, nrOfTimes);
+	}
+	
+	public FadeInOutUpdatable(IEvent event,float relativValue)
+	{
+		super(event,relativValue);
 	}
 
-	public FadeInOutUpdatable(IEvent event,float fadeValue)
+	public FadeInOutUpdatable(float relativValue, int nrOfTimes)
 	{
-		this(event,DEFAULT_SPEED,fadeValue);
+		super(relativValue, nrOfTimes);
+	}
+	
+	public FadeInOutUpdatable(float relativValue)
+	{
+		super(relativValue);
 	}
 
-	public FadeInOutUpdatable(float fadeValue)
+	public FadeInOutUpdatable(IEvent event, int nrOfTimes)
 	{
-		this(DEFAULT_SPEED,fadeValue);
+		super(event, nrOfTimes);
 	}
-
+	
 	public FadeInOutUpdatable(IEvent event)
 	{
-		this(event,DEFAULT_SPEED,DEFAULT_FADE);
+		super(event);
 	}
 
-	public FadeInOutUpdatable()
+	protected void inc(float inc)
 	{
-		this(DEFAULT_SPEED,DEFAULT_FADE);
-	}
-
-
-	@Override
-	public void update() {
-		if(mSpeed > 0) //fade in
-		{
-			if(mCurrentFade+mSpeed >= mFade) //if done 
-			{
-				mParent.mOpacity += mFade - mCurrentFade; //adds whats left.
-				if(mEvent != null)
-				{
-					mEvent.invokeEvent();  //do event. if exists
-				}
-				remove(); // remove itself
-				return;
-			}
-		}
-		else//fade out
-		{
-			if(mCurrentFade+mSpeed <= mFade) //if done 
-			{
-				mParent.mOpacity += mFade - mCurrentFade; //sub whats left.
-				if(mEvent != null)
-				{
-					mEvent.invokeEvent();  //do event. if exists
-				}
-				remove(); // remove itself
-				return;
-			}
-		}
-		mCurrentFade += mSpeed;
-		mParent.mOpacity += mSpeed;		
+		mParent.mOpacity+=inc;
 	}
 
 	@Override
-	public void init() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void init() {}
 }

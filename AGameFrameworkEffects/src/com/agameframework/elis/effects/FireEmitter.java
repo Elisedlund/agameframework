@@ -3,6 +3,8 @@ package com.agameframework.elis.effects;
 import com.agameframework.event.RemoveEvent;
 import com.agameframework.input.components.AccelerometerMovement;
 import com.agameframework.object.GameNode;
+import com.agameframework.object.Updatable;
+import com.agameframework.updatables.FadeInOutGreenUpdatable;
 import com.agameframework.updatables.FadeInOutUpdatable;
 import com.agameframework.updatables.MovementUpdatable;
 
@@ -14,15 +16,15 @@ public class FireEmitter extends GameNode{
 	public void create()
 	{
 		GameNode fire = new GameNode(R.drawable.effect);
-		fire.setColor(1f, 0.3f, 0.3f);
+
+		fire.setColor(0.9f, 140/255f, 40f/255f);
+		Updatable green = new FadeInOutGreenUpdatable(-0.03f, 0f, 100/255f, 1);
+		fire.addUpdateable(green);
 		float rx =(float)(Math.random() * 8) -4f;
 		float ry =(float)(Math.random() * 8) -4f;
 		fire.setXY(getX()+rx, getY()+ry );
 		fire.setScale((float)(Math.random()*1.5f)+0.8f);
-		fire.mOpacity=1f;
-//		sm.mXMotion = (float)(Math.random() * 0.2f) -0.1f;
-//		sm.mYMotion = (float)(Math.random() * 3f)+ 0.5f -Math.abs(sm.mXMotion);
-		
+	
 		MovementUpdatable sm = new MovementUpdatable();
 		fire.addUpdateable(sm); 
 		

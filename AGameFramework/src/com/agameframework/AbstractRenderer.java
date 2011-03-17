@@ -7,7 +7,6 @@ import android.opengl.GLSurfaceView;
 
 import com.agameframework.debug.Debug;
 import com.agameframework.interfaces.ILoadable;
-import com.agameframework.interfaces.IUpdatableAndRenderable;
 import com.agameframework.object.GameNode;
 import com.agameframework.texture.TextureHandler;
 

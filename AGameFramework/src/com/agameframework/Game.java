@@ -135,7 +135,7 @@ public class Game extends Activity {
 		super.onDestroy();
 	}
 
-	public static void setClearColor(float red, float green, float blue)
+	public static void setColor(float red, float green, float blue)
 	{
 		AbstractRenderer.setColor(red,green,blue);
 	}
