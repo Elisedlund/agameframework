@@ -1,5 +1,6 @@
 package com.agameframework.components;
 
+import com.agameframework.debug.Debug;
 import com.agameframework.event.CallMethodEvent;
 import com.agameframework.object.GameNode;
 import com.agameframework.updatables.FadeInOutUpdatable;
@@ -9,7 +10,7 @@ public class MotionBlur extends GameNode{
 	private GameNode mNodeToBlur = null;
 	
 	private int currentBlurCount = 0;
-	private int maxBlurCount = 10;
+	private int mBlurCount = 10;
 	
 	private float mFadeTo = 0.0f;
 	private float mRelativStart = -0.7f;
@@ -36,14 +37,14 @@ public class MotionBlur extends GameNode{
 	@Override
 	public void init()
 	{
-		maxBlurCount = (int) ((mParent.mOpacity+mRelativStart-mFadeTo) / mFadeSpeed);
+		mBlurCount = (int) Math.ceil(((mParent.mOpacity + mRelativStart - mFadeTo) / mFadeSpeed));
 		mNodeToBlur = mParent; //quick fix.
 	}
 	
 	public void update()
 	{
 		super.update();
-		if(currentBlurCount < maxBlurCount)
+		if(currentBlurCount < mBlurCount)
 		{
 			currentBlurCount++;
 			mParent.add(new Fade());

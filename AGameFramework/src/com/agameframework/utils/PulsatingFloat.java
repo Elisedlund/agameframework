@@ -4,8 +4,11 @@ import com.agameframework.interfaces.IUpdatable;
 
 public class PulsatingFloat implements IUpdatable{
 
+	private final float mTolerance = 0.001f;
+	
 	private Float mCurrentValue;
 	private float mSpeed;
+	private float mDiff;
 	private float mMin = 0f;
 	private float mMax = 1f;
 	private boolean mDone = false;
@@ -17,6 +20,7 @@ public class PulsatingFloat implements IUpdatable{
 	{
 		this.mCurrentValue = pulsingValue;
 		this.mSpeed = speed;
+		this.mDiff = speed;
 		this.mMin = min;
 		this.mMax = max;
 		this.mGoalPulseCount = nrOfTimes;
@@ -39,9 +43,9 @@ public class PulsatingFloat implements IUpdatable{
 
 	public void update()
 	{
-		mCurrentValue += mSpeed;
-
-		if (mCurrentValue <= mMin)
+		float newValue = mCurrentValue + mSpeed;
+		mDiff = mSpeed;
+		if (newValue <= mMin + mTolerance)
 		{
 			mSpeed *= -1;
 			mCurrentPulseCount++;
@@ -49,13 +53,14 @@ public class PulsatingFloat implements IUpdatable{
 			{
 				mDone = true;
 			}
-			if (mCurrentValue < mMin)
+			if (newValue < mMin)
 			{
-				//TODO diff.
+				mDiff =  mMin - mCurrentValue;
 				mCurrentValue = mMin;
 			}
+			return;
 		}
-		if (mCurrentValue >= mMax)
+		if (newValue >= mMax - mTolerance)
 		{
 			mSpeed *= -1;
 			mCurrentPulseCount++;
@@ -63,12 +68,14 @@ public class PulsatingFloat implements IUpdatable{
 			{
 				mDone = true;
 			}
-			if (mCurrentValue > mMax)
-			{
-				//TODO diff.
+			if (newValue > mMax)
+			{				
+				mDiff =  mMax - mCurrentValue;
 				mCurrentValue = mMax;
 			}
+			return;			
 		}
+		mCurrentValue = newValue;
 	}
 
 	public float getSpeed() {
@@ -105,7 +112,7 @@ public class PulsatingFloat implements IUpdatable{
 
 	public float getDiff()
 	{
-		return mSpeed;
+		return mDiff;
 	}
 	
 	public boolean isDone()
