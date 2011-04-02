@@ -21,18 +21,12 @@ public class GrowOnTouchEffect extends GameNode{
 
 		if(mParent.getUpdatableList()!=null)
 		Debug.print("count:" + mParent.getUpdatableList().size());
-//		float scale = mParent.getScaleX();
-		float speed = 0.2f;
 		
-//		Debug.print("scale: " + scale );
-//		IEvent restart = new NullEvent();
+		float speed = 0.2f;
+
 		IEvent restart = new CallMethodEvent(this, "init");
 		
-//		Updatable shrink = new GrowShrinkToUpdatable(restart,-speed,-0.5f); //shrink
-//		IEvent addShrink = new AddUpdatableEvent(shrink,mParent);
-//		Updatable grow = new GrowShrinkToUpdatable(addShrink,speed, 0.5f); //grow
-//		
-		Updatable growshrink = new GrowShrinkToUpdatable(restart, speed, -0.01f, 0.5f, 2);
+		Updatable growshrink = new GrowShrinkToUpdatable(restart, speed, 0f, 0.5f, 2);
 		IEvent addGrowShrink = new AddUpdatableEvent(growshrink,mParent);
 		
 		CompositeEvent comp = new CompositeEvent();

@@ -1,5 +1,6 @@
 package com.agameframework.updatables;
 
+import com.agameframework.debug.Debug;
 import com.agameframework.interfaces.IEvent;
 import com.agameframework.object.Updatable;
 import com.agameframework.utils.PulsatingFloat;
@@ -31,7 +32,7 @@ public abstract class AbstractPulsatingUpdatable extends Updatable
 		this(speed, relativValueMin, relativValueMax, nrOfTimes);
 		mEvent = event;
 	}
-	
+
 	public AbstractPulsatingUpdatable(float speed, float relativValue, int nrOfTimes) 
 	{
 		this(speed,0,Math.abs(relativValue),nrOfTimes);
@@ -87,11 +88,14 @@ public abstract class AbstractPulsatingUpdatable extends Updatable
 	@Override
 	public void update() 
 	{
-		inc(mPulse.getDiff());
-		mPulse.update();
-		if(mPulse.isDone())
+		if(mPulse.isDone() == false)
 		{
-			done();	
+			mPulse.update();
+			inc(mPulse.getDiff());
+			if(mPulse.isDone())
+			{
+				done();	
+			}
 		}
 	}
 
