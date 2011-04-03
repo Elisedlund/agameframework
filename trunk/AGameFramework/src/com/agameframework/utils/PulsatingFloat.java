@@ -6,7 +6,7 @@ public class PulsatingFloat implements IUpdatable{
 
 	private final float mTolerance = 0.001f;
 	
-	private Float mCurrentValue;
+	private float mCurrentValue;
 	private float mSpeed;
 	private float mDiff;
 	private float mMin = 0f;
@@ -16,7 +16,7 @@ public class PulsatingFloat implements IUpdatable{
 	private int mCurrentPulseCount = 0;
 
 
-	public PulsatingFloat(Float pulsingValue, float speed, float min, float max, int nrOfTimes)
+	public PulsatingFloat(float pulsingValue, float speed, float min, float max, int nrOfTimes)
 	{
 		this.mCurrentValue = pulsingValue;
 		this.mSpeed = speed;
@@ -26,7 +26,7 @@ public class PulsatingFloat implements IUpdatable{
 		this.mGoalPulseCount = nrOfTimes;
 	}
 
-	public PulsatingFloat(Float pulsingValue, float speed, float min, float max)
+	public PulsatingFloat(float pulsingValue, float speed, float min, float max)
 	{
 		this(pulsingValue, speed, min, max,-1);
 	}
@@ -102,11 +102,11 @@ public class PulsatingFloat implements IUpdatable{
 		this.mMin = min;
 	}
 
-	public Float getCurrentValue() {
+	public float getCurrentValue() {
 		return mCurrentValue;
 	}
 
-	public void setCurrentValue(Float currentValue) {
+	public void setCurrentValue(float currentValue) {
 		this.mCurrentValue = currentValue;
 	}
 

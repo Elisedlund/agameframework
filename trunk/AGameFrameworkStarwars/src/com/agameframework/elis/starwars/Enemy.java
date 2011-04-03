@@ -34,8 +34,8 @@ public class Enemy extends GameNode{
 		IEvent conditionEvent = new ConditionEvent(moveback  , new YSmallerThenCondition(this,-50f));
 		addUpdateable(new EventUpdatable(conditionEvent));
 		
-		CompositeEvent colEvent = new CompositeEvent(new EnemyDieEvent(this), new HealthIncEvent(-5));
-		addUpdateable(new CollisionUpdatable(this, GameRoot.mPlayer, colEvent));
+		CompositeEvent collisionEvent = new CompositeEvent(new EnemyDieEvent(this), new HealthIncEvent(-5));
+		addUpdateable(new CollisionUpdatable(this, GameRoot.mPlayer, collisionEvent));
 	}
 
 }
