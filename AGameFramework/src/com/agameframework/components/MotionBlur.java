@@ -1,6 +1,5 @@
 package com.agameframework.components;
 
-import com.agameframework.debug.Debug;
 import com.agameframework.event.CallMethodEvent;
 import com.agameframework.object.GameNode;
 import com.agameframework.updatables.FadeInOutUpdatable;

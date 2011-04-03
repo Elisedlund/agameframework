@@ -57,29 +57,30 @@ public class TODO {
 	//DONE gamenode remove childeren in remove.
 	//DONE AccelerometerMovement.add(gamenode). static add func? private constructor? in all input.
 	//DONE Set game size in Settings.
+	//DONE Shadow point to another nodes texture an make all black and render with offset.
+	//DONE rainbowColorizer.
+	//DONE motionblur parent istead of choosen one. less arguments.
+	//DONE fix pulse to be relativ
+	//DONE Screen orientation. accelerometer bug still.
 	
+	//TODO special updatables like fadeoutandremove shrinkandremove.
 	
 	//TODO remove dynamic text? and replace them with single char static text list?(only numbers?)
-	//TODO shadow and motionblur dont work on dynamic text like score/health ect.
+	//TODO shadow and motionblur dont work on dynamic text like score/health ect. croptextures? 
 	//TODO croping texture.? do crop in .getTextureName().
 	//TODO gameNode.add(prototypefactory) gets a instance form a prototype and adds it.
 	//TODO separate numbers from LabeledNumbers.
-	//TODO motionblur parent istead of choosen one. less arguments.
 	//TODO move trackball handling to GameInput press up down ect.
-	//TODO Shadow point to another nodes texture an make all black and render with offset.
-	//TODO rainbowColorizer.
-	//TODO remove all public variables and create getters. ProGuard will optimize this anyway.
+	//TODO remove all public variables and create getters. ProGuard will optimize this anyway??.
 	//TODO optimize text. static no static. text object creation. static dynamic separation? 
-	//TODO fix pulse to be relativ
 	//TODO menu effects.
 	//TODO remove constants in grow shring fade,
-	//TODO grow shrink can chose x/y.
-	//TODO special updatables like fadeoutandremove shrinkandremove.
+	//TODO grow shrink can chose x/y. one object each.
 	//TODO diffrennt calc for draw if texture is scaled or not. also fix scaled var in texture
 	//TODO accelerometer on diffrent orientation.
 	//TODO static function in every event. for direct usage.
-	//TODO restart game when in game bugg. (hold home and reopen when in game) 
-	//TODO reset the statics sound? 	
+	//TODO restart game when in game. bug. (hold home and reopen when in game) 
+	//TODO reset the statics sound? remove them?  	
 	//TODO gamenode render() bugg that makes game crash. (Rare) (just catch exeption?)
 	
 	//TODO make static texures of numbers in font. (saves texture croping but more texture swap) which is best?
@@ -88,7 +89,7 @@ public class TODO {
 	//Slide.
 	//rotate spin. (vertexbuffer.) or is it posible to rotate a drawtexture?
 	
-	//TODO relativ size opacity on Updatables. +-diff till totaldiff.
+	//DONE relativ size opacity on Updatables. +-diff till totaldiff.
 	//TODO left/right align Text.
 	//TODO window setting. fullscreen or not ect.
 	//TODO gamenode.find (movement component) in the inputcomponents.
@@ -104,6 +105,7 @@ public class TODO {
 	//TODO debugging help. like char do not exist.
 	//TODO Load Font files.
 	//TODO FIX music player.
+	//TODO prevent phone from sleep setting.
 	
 	//TODO sprite depth. needed or not? .
 	//TODO only change Media volume. never ringer.
@@ -127,7 +129,6 @@ setStreamVolume(int,int,int)
 	 */
 
 
-	//TODO prevent phone from sleep setting.
 	//TODO alla listor ska ha en clear
 
 
@@ -138,34 +139,19 @@ setStreamVolume(int,int,int)
       gl.glGetIntegerv(GL10.GL_MAX_TEXTURE_UNITS, value, 0);
       maxTextureUnits = value[0];
 	 */
-	//TODO mäta programtiden android.os.Process.getElapsedCpuTime() - "Returns elapsed milliseconds
-	//	of the time this process has run."
 	//TODO optimize filereading http://code.google.com/p/android/issues/detail?id=1359
 	//TODO ladda modeler från .obj format.
 
-
-
 	//TODO collisions som tittar på vilken av hastigheterna som är marginellt större innan den tar bort overlap.
-
 	//TODO admob.
-
-	//TODO agameengine.menu. rokon?
-
 
 	//TODO Animation. with above and different images
 	//TODO Particle engine, emitter .
 	//TODO Screen transitions
-	//TODO Motionblurcomp replica?
-
-
-	//TODO Screen orientation.
 
 	//TODO tilemap? tiled?
-	//TODO Backgrounds ?
-
-	//Sound
+	//TODO Backgrounds?
 	//TODO unload in soundEffectsPlayer
-	//TODO in RandomSoundEffect remove sound from SoundPool in (removeSound)
 
 	//Fixes
 	//TODO	engine not listen on events when not used. this.setOnTouchListener(null); this.setOnKeyListener(l) trackball.
@@ -177,14 +163,11 @@ setStreamVolume(int,int,int)
 	//Debug.
 	//TODO ddms debuga och se om det alloceras minne i loopen.
 	//http://android-developers.blogspot.com/2009/02/track-memory-allocations....
-
 	//TODO traceview se om det är något som är långsamt
-
-
+	
 	//Changing the background bitmap to RGB_565 helped tremendously. That alone got
 	//me to 30-35fps. I was still drawing a full surface layer in ARGB_8888 that the trails 
 	//were drawn on to the main canvas. I realized that if I 
-
 	//TODO
 	/*Update 8/28/2009 - Timothy F has sent me an easier way to do a counter update with no allocations:
 
@@ -197,10 +180,7 @@ setStreamVolume(int,int,int)
 		sb.getChars(0, sb.length(), c, 0);
 		canvas.drawText(c, 0, sb.length(), worldWidth - 60, worldHeight +
 		INFO_HEADER_HEIGHT - 20, gameResources.fpsPaint);
-		}*/
-
-	//TODO rättigheter i varje spel.
-
+		}*/	
 	//TODO ljud effect for hål i labyrinth D:\Skolan\Android\Sound\Crashes/plastic roll2
 	//TODO ljud för fall i maze D:\Skolan\Android\Sound\Comical Effects/comical decen
 	//TODO ljud för nyckelupplock maze D:\Skolan\Android\Sound\Deuren/unlock

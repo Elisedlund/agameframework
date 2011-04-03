@@ -24,16 +24,23 @@ public class GameRoot extends GameNode implements ILoadable{
 	
 	private StarBackground mBackground;
 	
+	private String scoreString = Game.string(R.string.score);
+	private String highscoreString = Game.string(R.string.highscore);
+	private String healthString = Game.string(R.string.health);
 	public void load()
 	{		
 		//Make sure only the correct resources are in the folders OR it will CRASH
 		//you can always use the loader to load just specific media.
 		Loader.loadTexture(R.drawable.class.getFields()); //load all resources in drawable
 		Loader.loadSound(R.raw.class.getFields());//load all resources in raw.
-		Loader.loadText("Score:", R.drawable.font_arial_white_light);
-		Loader.loadText("Highscore:", R.drawable.font_arial_white_light);
-		Loader.loadText("Health:", R.drawable.font_arial_white_light);
+		Loader.loadText(scoreString, R.drawable.font_arial_white_light);
+		Loader.loadText(highscoreString, R.drawable.font_arial_white_light);
+		Loader.loadText(healthString, R.drawable.font_arial_white_light);
 
+	}
+	
+	public void init()
+	{
 		mEnemyList = new GameNode();
 		mLaserList = new GameNode();
 		
@@ -48,17 +55,16 @@ public class GameRoot extends GameNode implements ILoadable{
 		
 		mPlayer.print("player");
 	
-		ScoreText scoreText = new ScoreText("Score:", R.drawable.font_arial_white);
+		ScoreText scoreText = new ScoreText(scoreString, R.drawable.font_arial_white);
 		scoreText.setXY(scoreText.getWidth()/2, scoreText.getHeight()/2);
 		add(scoreText);
-//		scoreText.getNumberNode().addUpdateable(new PulsatingOpacityUpdatable(0.1f,1f));
 		
-		GameNode highscoreText = new HighscoreText("Highscore:", R.drawable.font_arial_white);
+		GameNode highscoreText = new HighscoreText(highscoreString, R.drawable.font_arial_white);
 		highscoreText.setXY(highscoreText.getWidth()/2, Game.getHeight() - highscoreText.getHeight()/2);
 		add(highscoreText);
 		
 		GameSettings.setHealth(100);
-		HealthText healthText = new HealthText("Health:", R.drawable.font_arial_white);
+		HealthText healthText = new HealthText(healthString, R.drawable.font_arial_white);
 		healthText.setXY(
 				Game.getWidth() - (healthText.getWidth()/2 + healthText.getNumbers().getWidth()),
 				healthText.getHeight()/2);

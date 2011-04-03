@@ -1,6 +1,5 @@
 package com.agameframework.updatables;
 
-import com.agameframework.debug.Debug;
 import com.agameframework.interfaces.IEvent;
 import com.agameframework.object.Updatable;
 import com.agameframework.utils.PulsatingFloat;
