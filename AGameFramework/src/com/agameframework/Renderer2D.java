@@ -7,16 +7,16 @@ import android.opengl.GLSurfaceView;
 
 import com.agameframework.debug.Debug;
 import com.agameframework.settings.GameSettings;
-import com.agameframework.utils.PreformanceTimer;
+import com.agameframework.utils.PerformanceTimer;
 
 
 public class Renderer2D extends AbstractRenderer implements GLSurfaceView.Renderer{
 
 	private boolean mShowFps = GameSettings.SHOW_FPS;
-	private PreformanceTimer mPreformanceTimer;
+	private PerformanceTimer mPerformanceTimer;
 	{
 		if (mShowFps)
-			mPreformanceTimer = new PreformanceTimer("Average frame render", 500);
+			mPerformanceTimer = new PerformanceTimer("Average frame render", 500);
 	}
 	
 	public Renderer2D() {
@@ -63,12 +63,12 @@ public class Renderer2D extends AbstractRenderer implements GLSurfaceView.Render
 		if(mGameRoot != null)
 		{
 			if (mShowFps)
-				mPreformanceTimer.startTimer();
+				mPerformanceTimer.startTimer();
 			gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
 			gl.glMatrixMode(GL10.GL_MODELVIEW);
 			mGameRoot.render(gl);
 			if (mShowFps)
-				mPreformanceTimer.stopTimer();
+				mPerformanceTimer.stopTimer();
 		}
 	}
 

@@ -2,7 +2,7 @@ package com.agameframework.utils;
 
 import com.agameframework.debug.Debug;
 
-public class PreformanceTimer {
+public class PerformanceTimer {
 
 	private MilliTimer mTimer = new MilliTimer();
 	private long[] mTimeArray;
@@ -15,7 +15,7 @@ public class PreformanceTimer {
 	 * @param tag string prefix when writen in the log
 	 * @param bufferSize the size of the buffer.
 	 */
-	public PreformanceTimer(String tag,int bufferSize)
+	public PerformanceTimer(String tag,int bufferSize)
 	{
 		mTag = tag;
 		mCurrentIndex = 0;
