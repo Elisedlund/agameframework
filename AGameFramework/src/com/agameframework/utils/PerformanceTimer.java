@@ -10,7 +10,7 @@ public class PerformanceTimer {
 	private int mCurrentIndex;
 	private String mTag;
 
-	
+
 	/** Creates a preformance timer. 
 	 * @param tag string prefix when writen in the log
 	 * @param bufferSize the size of the buffer.
@@ -23,7 +23,16 @@ public class PerformanceTimer {
 		mTimeArray = new long[bufferSize];
 	}
 
-	
+	/** Creates a preformance timer. 
+	 * @param tag string prefix when writen in the log
+	 * @param bufferSize the size of the buffer.
+	 */
+	public PerformanceTimer(String tag)
+	{
+		this(tag,1);
+	}
+
+
 	/**Start the timer.
 	 * 
 	 */
@@ -32,7 +41,7 @@ public class PerformanceTimer {
 		mTimer.startTimer();
 	}
 
-	
+
 	/**Stops the timer and adds the time to a timebuffer. 
 	 * if the timebuffer is full it prints the average time to the log.
 	 */
@@ -48,7 +57,7 @@ public class PerformanceTimer {
 		}
 	}
 
-	
+
 	/** Calc and print the average time.
 	 */
 	private void printAverage()
@@ -58,7 +67,7 @@ public class PerformanceTimer {
 		{
 			total += mTimeArray[i];
 		}
-		
+
 		float average = total /(float)(mLastIndex+1);
 		Debug.print(mTag + ": " + average + "ms , total: " + total);
 	}

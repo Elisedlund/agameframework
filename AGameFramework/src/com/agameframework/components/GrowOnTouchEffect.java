@@ -11,7 +11,7 @@ import com.agameframework.interfaces.IEvent;
 import com.agameframework.interfaces.IRemovable;
 import com.agameframework.object.GameNode;
 import com.agameframework.object.Updatable;
-import com.agameframework.updatables.GrowShrinkToUpdatable;
+import com.agameframework.updatables.GrowShrinkUpdatable;
 
 public class GrowOnTouchEffect extends GameNode{
 	
@@ -26,7 +26,7 @@ public class GrowOnTouchEffect extends GameNode{
 
 		IEvent restart = new CallMethodEvent(this, "init");
 		
-		Updatable growshrink = new GrowShrinkToUpdatable(restart, speed, 0f, 0.5f, 2);
+		Updatable growshrink = new GrowShrinkUpdatable(restart, speed, 0f, 0.5f, 2);
 		IEvent addGrowShrink = new AddUpdatableEvent(growshrink,mParent);
 		
 		CompositeEvent comp = new CompositeEvent();

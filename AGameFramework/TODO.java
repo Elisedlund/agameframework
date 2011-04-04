@@ -62,15 +62,15 @@ public class TODO {
 	//DONE motionblur parent istead of choosen one. less arguments.
 	//DONE fix pulse to be relativ
 	//DONE Screen orientation. accelerometer bug still.
+	//DONE move trackball handling to GameInput press up down ect.
 	
 	//TODO special updatables like fadeoutandremove shrinkandremove.
-	
+	//TODO static font problem. (wrong image on restart after !backbutton!).
 	//TODO remove dynamic text? and replace them with single char static text list?(only numbers?)
 	//TODO shadow and motionblur dont work on dynamic text like score/health ect. croptextures? 
 	//TODO croping texture.? do crop in .getTextureName().
 	//TODO gameNode.add(prototypefactory) gets a instance form a prototype and adds it.
 	//TODO separate numbers from LabeledNumbers.
-	//TODO move trackball handling to GameInput press up down ect.
 	//TODO remove all public variables and create getters. ProGuard will optimize this anyway??.
 	//TODO optimize text. static no static. text object creation. static dynamic separation? 
 	//TODO menu effects.
