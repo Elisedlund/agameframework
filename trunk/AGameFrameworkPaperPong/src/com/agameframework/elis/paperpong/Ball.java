@@ -2,7 +2,6 @@ package com.agameframework.elis.paperpong;
 
 import com.agameframework.Game;
 import com.agameframework.components.MotionBlur;
-import com.agameframework.components.Shadow;
 import com.agameframework.conditions.YLargerThenCondition;
 import com.agameframework.conditions.YSmallerThenCondition;
 import com.agameframework.event.CompositeEvent;

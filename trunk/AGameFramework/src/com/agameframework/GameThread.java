@@ -9,6 +9,7 @@ import com.agameframework.interfaces.IUpdatableAndRenderable;
 import com.agameframework.object.GameNode;
 import com.agameframework.settings.GameSettings;
 import com.agameframework.utils.MilliTimer;
+import com.agameframework.utils.PreformanceTimer;
 
 
 /**
@@ -32,13 +33,17 @@ public class GameThread extends Thread {
 	private volatile boolean mIsPaused = false;
 
 	private boolean mShowFps = GameSettings.SHOW_FPS;
-	private LinkedList<Integer> mFpsArray = new LinkedList<Integer>();
-
+	private PreformanceTimer mPreformanceTimer;
+	{
+		if (mShowFps)
+			mPreformanceTimer = new PreformanceTimer("Average frame update", 500);
+	}
 	private ArrayList<IEvent> mTimedEventsList = new ArrayList<IEvent>(1);
 	private ArrayList<Long> mEventTimesList = new ArrayList<Long>(1);
 	private GameEngine mGameRenderer;
 
 	protected ArrayList<IEvent> mSyncEventsList = new ArrayList<IEvent>(1);
+
 
 	public GameThread(GameEngine gameEngine)
 	{
@@ -77,12 +82,16 @@ public class GameThread extends Thread {
 
 				doSyncEvents();
 				doTimedEvents();
+				if (mShowFps)
+					mPreformanceTimer.startTimer();
 				mGameRoot.update();// game state is updated
+				if (mShowFps)
+					mPreformanceTimer.stopTimer();
 
-				//TODO TEST AND FIX.
+				//TODO TEST.
 				mGameRenderer.requestRender();
+				
 				mTimer.stopTimer();
-				showFps();
 
 				spareTime = (mMaxTimeForAFrame - mTimer.getTime())
 				- overSleepTime;
@@ -125,24 +134,6 @@ public class GameThread extends Thread {
 	}// end of func
 
 
-	private void showFps() {
-		if(mShowFps)
-		{
-			int mspf = (int) mTimer.getTime();
-			mFpsArray.add(mspf);
-			if (mFpsArray.size() == 300)
-			{
-				int afps = 0;
-				for (int i : mFpsArray) {
-					afps += i;
-				}
-				float avarage = afps/300f;
-				avarage=1000f/avarage;
-				Debug.print("max possible fps: " + avarage);
-				mFpsArray.clear();
-			}
-		}
-	}
 
 	private void doSyncEvents() {
 		if (mSyncEventsList.isEmpty())

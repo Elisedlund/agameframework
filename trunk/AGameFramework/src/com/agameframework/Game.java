@@ -17,6 +17,7 @@ import com.agameframework.interfaces.ISettings;
 import com.agameframework.object.GameNode;
 import com.agameframework.object.Rectangle;
 import com.agameframework.settings.GameSettings;
+import com.agameframework.sound.SoundEffectPlayer;
 import com.agameframework.texture.TextureHandler;
 
 
@@ -56,7 +57,6 @@ public class Game extends Activity {
 		GameSettings.reset(this);
 		GameInput.reset();
 		TextureHandler.reset();
-
 		loadSettings();
 
 		//TODO MOVE TO SETTINGS.
@@ -116,6 +116,7 @@ public class Game extends Activity {
 	{
 		Debug.print("Game activity onDestroy()");
 		GameInput.reset(); // removes all input.
+		SoundEffectPlayer.release();
 		GameEngine.sGameThread.quitGame();
 		boolean retry = true;
 		while(retry)
