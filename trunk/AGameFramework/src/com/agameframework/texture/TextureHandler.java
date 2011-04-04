@@ -226,6 +226,7 @@ public class TextureHandler {
 
 //				Debug.print("NPOT");
 				//TODO load bitmap with padding instead?.
+				
 				bitmap = enlargeBitmap(bitmap,width,height);
 			}
 
@@ -314,10 +315,6 @@ public class TextureHandler {
 
 		canvas = new Canvas(newBitmap);  
 
-		//ALT.  set texture cords and use vbo?
-		
-//		Debug.print("nW: " +newWidth + " oW: " + oldBitmap.getWidth());
-//		Debug.print("nH: " +newHeight + " oH: " + oldBitmap.getHeight());
 		canvas.drawBitmap(oldBitmap, (newWidth-oldBitmap.getWidth())/2, (newHeight-oldBitmap.getHeight())/2, null); 
 		return newBitmap;
 	}

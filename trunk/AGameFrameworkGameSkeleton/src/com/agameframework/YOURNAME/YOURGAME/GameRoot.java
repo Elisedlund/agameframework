@@ -29,7 +29,6 @@ public class GameRoot extends GameNode implements ILoadable{
 		Loader.loadSound(R.raw.class.getFields());//load all resources in raw.
 		//you can always use the loader to load just specific media. if your not lazy.
 
-
 		Loader.loadText(appNameString, R.drawable.font_arial_white); //create a static text texture. 
 	}//end of load()
 

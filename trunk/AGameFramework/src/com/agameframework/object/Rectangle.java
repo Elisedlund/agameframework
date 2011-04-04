@@ -110,23 +110,43 @@ public class Rectangle{
 
 	public void setScale(float scale)
 	{
-		setWidth(mWidth*(scale/mScaleX));
-		setHeight(mHeight*(scale/mScaleY));
-		mScaleX=scale;
-		mScaleY=scale;
+		setScaleX(scale);
+		setScaleY(scale);
 	}
 
 	public void setScale(float scaleX, float scaleY)
 	{
+		setScaleX(scaleX);
+		setScaleY(scaleY);
+	}
+	
+	public void setScaleX(float scaleX)
+	{
 		setWidth(mWidth*(scaleX/mScaleX));
-		setHeight(mHeight*(scaleY/mScaleY));
 		mScaleX=scaleX;
+	}
+	
+	public void setScaleY(float scaleY)
+	{
+		setHeight(mHeight*(scaleY/mScaleY));
 		mScaleY=scaleY;
 	}
-
+	
+	
+	public final void incScaleX(float inc)
+	{
+		setScaleX(mScaleX+inc);
+	}
+	
+	public final void incScaleY(float inc)
+	{
+		setScaleY(mScaleY+inc);
+	}
+	
 	public final void incScale(float inc)
 	{
-		setScale(mScaleX+inc,mScaleY+inc);
+		incScaleX(inc);
+		incScaleY(inc);
 	}
 
 	/** 
