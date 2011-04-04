@@ -1,15 +1,13 @@
 package com.agameframework;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 import com.agameframework.debug.Debug;
 import com.agameframework.interfaces.IEvent;
-import com.agameframework.interfaces.IUpdatableAndRenderable;
 import com.agameframework.object.GameNode;
 import com.agameframework.settings.GameSettings;
 import com.agameframework.utils.MilliTimer;
-import com.agameframework.utils.PreformanceTimer;
+import com.agameframework.utils.PerformanceTimer;
 
 
 /**
@@ -33,10 +31,10 @@ public class GameThread extends Thread {
 	private volatile boolean mIsPaused = false;
 
 	private boolean mShowFps = GameSettings.SHOW_FPS;
-	private PreformanceTimer mPreformanceTimer;
+	private PerformanceTimer mPerformanceTimer;
 	{
 		if (mShowFps)
-			mPreformanceTimer = new PreformanceTimer("Average frame update", 500);
+			mPerformanceTimer = new PerformanceTimer("Average frame update", 500);
 	}
 	private ArrayList<IEvent> mTimedEventsList = new ArrayList<IEvent>(1);
 	private ArrayList<Long> mEventTimesList = new ArrayList<Long>(1);
@@ -83,10 +81,10 @@ public class GameThread extends Thread {
 				doSyncEvents();
 				doTimedEvents();
 				if (mShowFps)
-					mPreformanceTimer.startTimer();
+					mPerformanceTimer.startTimer();
 				mGameRoot.update();// game state is updated
 				if (mShowFps)
-					mPreformanceTimer.stopTimer();
+					mPerformanceTimer.stopTimer();
 
 				//TODO TEST.
 				mGameRenderer.requestRender();
