@@ -6,10 +6,19 @@ import javax.microedition.khronos.opengles.GL10;
 import android.opengl.GLSurfaceView;
 
 import com.agameframework.debug.Debug;
+import com.agameframework.settings.GameSettings;
+import com.agameframework.utils.PreformanceTimer;
 
 
 public class Renderer2D extends AbstractRenderer implements GLSurfaceView.Renderer{
 
+	private boolean mShowFps = GameSettings.SHOW_FPS;
+	private PreformanceTimer mPreformanceTimer;
+	{
+		if (mShowFps)
+			mPreformanceTimer = new PreformanceTimer("Average frame render", 500);
+	}
+	
 	public Renderer2D() {
 		super();	
 	}
@@ -50,12 +59,16 @@ public class Renderer2D extends AbstractRenderer implements GLSurfaceView.Render
 	 */
 	public void onDrawFrame(GL10 gl) {
 
-		//TODO move to abstractRenderer? 
+	
 		if(mGameRoot != null)
 		{
+			if (mShowFps)
+				mPreformanceTimer.startTimer();
 			gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
 			gl.glMatrixMode(GL10.GL_MODELVIEW);
 			mGameRoot.render(gl);
+			if (mShowFps)
+				mPreformanceTimer.stopTimer();
 		}
 	}
 

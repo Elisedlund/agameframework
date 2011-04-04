@@ -16,8 +16,8 @@ public class Paddle extends GameNode{
 		super(R.drawable.paddle);
 		setScale(0.7f);
 		setXY(x,y);
-		mGoalX=x; 
-		mGoalY=y; 
+		mGoalX = x; 
+		mGoalY = y; 
 		add(new MotionBlur(-0.8f, 0.04f));
 
 	}

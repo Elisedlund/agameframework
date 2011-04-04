@@ -8,9 +8,10 @@ public class SoundEvent implements IEvent{
 	private int mSoundID;
 	private float mVolume = 1f;
 
-	public SoundEvent(int soundID)
+	public SoundEvent(int resourceID)
 	{
-		mSoundID = soundID;
+		//TODO do a load? to make this one safe to?
+		mSoundID = SoundEffectPlayer.getSoundID(resourceID);
 	}
 	
 	public void setVolume(float volume)
@@ -21,17 +22,6 @@ public class SoundEvent implements IEvent{
 	@Override
 	public void invokeEvent() 
 	{
-		SoundEffectPlayer.play(mSoundID, mVolume);
+		SoundEffectPlayer.play_soundID(mSoundID, mVolume);
 	}
-	
-	public static void invoke(int soundID)
-	{
-		SoundEffectPlayer.play(soundID);
-	}
-	
-	public static void invoke(int soundID, float volume)
-	{
-		SoundEffectPlayer.play(soundID, volume);
-	}
-
 }

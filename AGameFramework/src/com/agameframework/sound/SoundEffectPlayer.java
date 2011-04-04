@@ -15,15 +15,14 @@ import com.agameframework.settings.GameSettings;
  * @author Elis
  */
 public class SoundEffectPlayer {
+
+
 	private static final int MAX_STREAMS = 25;
 	private static AudioManager sAudioManager = (AudioManager)Game.instance.getSystemService(Context.AUDIO_SERVICE);
 	private static int sStreamVolume = sAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC); 
-
-	//TODO is static going to be a problem?. probably. change. 
-	
 	private static SoundPool sSoundPool; 
 	private static HashMap<Integer, Integer> sSoundPoolMap; 
-	
+
 
 	private static void loadPlayer()
 	{
@@ -44,7 +43,7 @@ public class SoundEffectPlayer {
 		{
 			return; // no need to load it twice.
 		}
-		
+
 		int id = sSoundPool.load(Game.instance,resourceID,0);
 		sSoundPoolMap.put(resourceID, id);
 	}
@@ -71,8 +70,8 @@ public class SoundEffectPlayer {
 		}
 		sSoundPool.play(sSoundPoolMap.get(resourceID), sStreamVolume*volumeProcentage, sStreamVolume*volumeProcentage, 1, 0, 1f); 
 	}
-	
-	
+
+
 	public static void play_soundID(int soundID)
 	{
 		if(!GameSettings.getSoundEffect())
@@ -80,18 +79,39 @@ public class SoundEffectPlayer {
 		sSoundPool.play(soundID, sStreamVolume, sStreamVolume, 1, 0, 1f); 
 	}
 	
+	public static void play_soundID(int soundID, float volumeProcentage)
+	{
+		if(!GameSettings.getSoundEffect())
+		{return;}
+		sSoundPool.play(soundID, sStreamVolume*volumeProcentage, sStreamVolume*volumeProcentage, 1, 0, 1f); 
+	}
+
+	/**Gets the sound id.
+	 * @param resourceID
+	 * @return
+	 */
 	public static int getSoundID(int resourceID)
 	{
 		return sSoundPoolMap.get(resourceID);
 	}
-		
+
+	/**releases the resources. engine calls when the activity is destroyed.
+	 * 
+	 */
 	public static void release()
 	{
-		sSoundPool.release();
+		if(sSoundPool != null)
+		{
+			sSoundPool.release();
+		}
 		sSoundPool = null;
 		sSoundPoolMap = null;
 	}
-	
+
+	/**Check if a resource is loaded.
+	 * @param resourceID
+	 * @return
+	 */
 	private static boolean isLoaded(int resourceID)
 	{
 		return sSoundPoolMap.containsKey(resourceID);
