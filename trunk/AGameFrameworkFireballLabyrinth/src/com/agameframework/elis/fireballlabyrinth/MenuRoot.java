@@ -26,14 +26,14 @@ public class MenuRoot extends GameNode implements ILoadable{
 		Game.string(R.string.more_games),
 		Game.string(R.string.mail_developer),
 		Game.string(R.string.quit_game)
-		};
-	
+	};
+
 	private static String[] gameStrings = {
 		Game.string(R.string.label_score),
 		Game.string(R.string.label_highscore),
 		Game.string(R.string.touch_to_restart),
-		};
-	
+	};
+
 	/**
 	 * Load textures and sounds here.
 	 * you can also create game stuff here.
@@ -45,16 +45,16 @@ public class MenuRoot extends GameNode implements ILoadable{
 		Loader.loadTexture(R.drawable.class.getFields()); //load all resources in drawable
 		Loader.loadSound(R.raw.class.getFields());//load all resources in raw.
 		//you can always use the loader to load just specific media. if your not lazy.
-		
+
 		Loader.loadText(menuStrings, R.drawable.font_arial_white);
 		Loader.loadText(gameStrings, R.drawable.font_arial_white);
-		
+
 	}//end of load()
 
 	@Override 
 	public void init()
 	{
-		
+
 		Menu menu = new Menu(
 				menuStrings, 
 				new IEvent[]{
@@ -63,8 +63,8 @@ public class MenuRoot extends GameNode implements ILoadable{
 						new SearchForPackageEvent(),
 						new SendMailEvent(),
 						new QuitGameEvent()
-						},
-						new VibrateEvent(100));//effect on release.
+				},
+				new VibrateEvent(100));//effect on release.
 		menu.setXY(Game.getCenterX(), Game.getCenterY());
 		menu.setLineSpace(10);
 		menu.setScale(1.6f);
@@ -72,6 +72,12 @@ public class MenuRoot extends GameNode implements ILoadable{
 		menu.setShadow(0.4f, 4f, -4f);
 		menu.effectRainbow();
 		add(menu);
+//		for (int i=0; i < 10;i++)
+//		{
+//			Wall w = new Wall();
+//			w.setXY(20f, 10+20f*i);
+//			add(w);
+//		}
 	}
 
 }// end of class

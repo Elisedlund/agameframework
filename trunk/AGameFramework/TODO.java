@@ -63,7 +63,10 @@ public class TODO {
 	//DONE fix pulse to be relativ
 	//DONE Screen orientation. accelerometer bug still.
 	//DONE move trackball handling to GameInput press up down ect.
+	//DONE rendering optimatizion.
 	
+	//TODO grow effect? float precision?
+	//TODO alpha problem. premultiplyid?
 	//TODO special updatables like fadeoutandremove shrinkandremove.
 	//TODO static font problem. (wrong image on restart after !backbutton!).
 	//TODO remove dynamic text? and replace them with single char static text list?(only numbers?)
