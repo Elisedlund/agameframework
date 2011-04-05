@@ -66,6 +66,10 @@ public class Renderer2D extends AbstractRenderer implements GLSurfaceView.Render
 				mPerformanceTimer.startTimer();
 			gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
 			gl.glMatrixMode(GL10.GL_MODELVIEW);
+			
+			//Needed to change opacity and color.
+			gl.glTexEnvx(GL10.GL_TEXTURE_ENV, GL10.GL_TEXTURE_ENV_MODE, GL10.GL_MODULATE); 
+			
 			mGameRoot.render(gl);
 			if (mShowFps)
 				mPerformanceTimer.stopTimer();

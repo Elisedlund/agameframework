@@ -15,12 +15,12 @@ public class Ball extends GameNode{
 	public MovementUpdatable mMovement;
 	private AccelerometerMovement mBallController;
 
-	public Ball()
+	public Ball()  
 	{
 		super(R.drawable.ball);
 	}
 	
-	@Override 
+	@Override  
 	public void init()
 	{
 		mMovement = new MovementUpdatable();
