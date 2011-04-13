@@ -11,22 +11,22 @@ import com.agameframework.interfaces.IRemovable;
 import com.agameframework.object.GameNode;
 import com.agameframework.updatables.MovementUpdatable;
 
-public class KeyPressMovement implements KeyPressListener , IRemovable{
+public class KeyPressXMovement implements KeyPressListener , IRemovable{
 
 
 	private MovementUpdatable mMovement;
 	private float mMaxSpeed = 8f;
 	private float mImpact = 1.0f;
 
-	private KeyPressMovement(MovementUpdatable om)
+	private KeyPressXMovement(MovementUpdatable om)
 	{
 		mMovement = om;
 		GameInput.addKeyPressListner(this);
 	}
 	
-	public static KeyPressMovement add(GameNode gameNodeAddTo, MovementUpdatable movement)
+	public static KeyPressXMovement add(GameNode gameNodeAddTo, MovementUpdatable movement)
 	{
-		KeyPressMovement kpm = new KeyPressMovement(movement);
+		KeyPressXMovement kpm = new KeyPressXMovement(movement);
 		gameNodeAddTo.addRemovable(kpm);
 		return kpm;
 	}
@@ -48,24 +48,6 @@ public class KeyPressMovement implements KeyPressListener , IRemovable{
 			if (mMovement.mXMotion < getMaxSpeed())
 			{
 				mMovement.mXMotion += getImpact();				
-			}
-			return true;
-		}
-		if (keyCode == KeyEvent.KEYCODE_DPAD_UP
-				|| keyCode == KeyEvent.KEYCODE_W)
-		{
-			if (mMovement.mYMotion < getMaxSpeed())
-			{
-				mMovement.mYMotion += getImpact();				
-			}
-			return true;
-		}
-		else if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN
-				|| keyCode == KeyEvent.KEYCODE_S)
-		{
-			if (mMovement.mYMotion > -getMaxSpeed())
-			{
-				mMovement.mYMotion -= getImpact();				
 			}
 			return true;
 		}

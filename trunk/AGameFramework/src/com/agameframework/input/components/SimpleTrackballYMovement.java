@@ -11,21 +11,21 @@ import com.agameframework.interfaces.IRemovable;
 import com.agameframework.object.GameNode;
 import com.agameframework.object.Rectangle;
 
-public class SimpleTrackballMovement implements TrackballListener , IRemovable{
+public class SimpleTrackballYMovement implements TrackballListener , IRemovable{
 
 	private Rectangle mRect;
 
 	//TODO inpact osv.
 	
-	private SimpleTrackballMovement(Rectangle rect)
+	private SimpleTrackballYMovement(Rectangle rect)
 	{
 		mRect = rect;
 		GameInput.addTrackballListener(this);
 	}
 
-	public static SimpleTrackballMovement add(GameNode gameNodeAddTo)
+	public static SimpleTrackballYMovement add(GameNode gameNodeAddTo)
 	{
-		SimpleTrackballMovement stm = new SimpleTrackballMovement(gameNodeAddTo);
+		SimpleTrackballYMovement stm = new SimpleTrackballYMovement(gameNodeAddTo);
 		gameNodeAddTo.addRemovable(stm);
 		return stm;
 	}
@@ -35,7 +35,6 @@ public class SimpleTrackballMovement implements TrackballListener , IRemovable{
 	 */
 	@Override
 	public void trackball(MotionEvent event) {
-		mRect.incX(event.getX());	
 		mRect.incY(-event.getY());	
 	}
 

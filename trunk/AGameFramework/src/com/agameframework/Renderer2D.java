@@ -33,6 +33,7 @@ public class Renderer2D extends AbstractRenderer implements GLSurfaceView.Render
 		gl.glShadeModel(GL10.GL_FLAT); //TODO remove?
 		gl.glEnable(GL10.GL_BLEND);
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
+//		gl.glBlendFunc(GL10.GL_ONE, GL10.GL_ONE_MINUS_SRC_ALPHA);
 		gl.glColor4x(0x10000, 0x10000, 0x10000, 0x10000);
 		gl.glDisable(GL10.GL_DEPTH_TEST);//TODO enable? to controll depth of sprites?
 		gl.glEnable(GL10.GL_TEXTURE_2D);

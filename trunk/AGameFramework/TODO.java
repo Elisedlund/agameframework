@@ -65,6 +65,8 @@ public class TODO {
 	//DONE move trackball handling to GameInput press up down ect.
 	//DONE rendering optimatizion.
 	
+	
+	//TODO abstract input so components can share code.
 	//TODO grow effect? float precision?
 	//TODO alpha problem. premultiplyid?
 	//TODO special updatables like fadeoutandremove shrinkandremove.
