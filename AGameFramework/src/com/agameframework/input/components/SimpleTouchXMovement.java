@@ -5,7 +5,6 @@ package com.agameframework.input.components;
 
 import android.view.MotionEvent;
 
-import com.agameframework.Game;
 import com.agameframework.input.GameInput;
 import com.agameframework.input.TouchDownListener;
 import com.agameframework.input.TouchMoveListener;
@@ -13,20 +12,20 @@ import com.agameframework.interfaces.IRemovable;
 import com.agameframework.object.GameNode;
 import com.agameframework.object.Rectangle;
 
-public class SimpleTouchMovement implements TouchDownListener, TouchMoveListener, IRemovable{
+public class SimpleTouchXMovement implements TouchDownListener, TouchMoveListener, IRemovable{
 
 	private Rectangle mRect;
 	
-	private SimpleTouchMovement(Rectangle rect)
+	private SimpleTouchXMovement(Rectangle rect)
 	{
 		mRect = rect;
 		GameInput.addTouchDownListner(this);
 		GameInput.addTouchMoveListner(this);
 	}
 
-	public static SimpleTouchMovement add(GameNode gameNodeAddTo)
+	public static SimpleTouchXMovement add(GameNode gameNodeAddTo)
 	{
-		SimpleTouchMovement stm = new SimpleTouchMovement(gameNodeAddTo);
+		SimpleTouchXMovement stm = new SimpleTouchXMovement(gameNodeAddTo);
 		gameNodeAddTo.addRemovable(stm);
 		return stm;
 	}
@@ -39,11 +38,11 @@ public class SimpleTouchMovement implements TouchDownListener, TouchMoveListener
 
 	@Override
 	public void touchDown(MotionEvent event) {
-		mRect.setXY(event.getX(),Math.abs(event.getY()-Game.getHeight()));
+		mRect.setX(event.getX());
 	}
 
 	@Override
 	public void touchMove(MotionEvent event) {
-		mRect.setXY(event.getX(),Math.abs(event.getY()-Game.getHeight()));
+		mRect.setX(event.getX());
 	}
 }

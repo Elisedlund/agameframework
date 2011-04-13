@@ -5,10 +5,10 @@ import android.view.KeyEvent;
 import com.agameframework.Game;
 import com.agameframework.event.StopXMotionEvent;
 import com.agameframework.event.StopYMotionEvent;
+import com.agameframework.input.components.AccelerometerMovement;
 import com.agameframework.input.components.DoEventOnAnywhereTouchDown;
 import com.agameframework.input.components.DoEventOnKeyPress;
 import com.agameframework.input.components.DoEventOnTrackballDown;
-import com.agameframework.input.components.TrackballMovement;
 import com.agameframework.interfaces.IEvent;
 import com.agameframework.object.GameNode;
 import com.agameframework.updatables.MovementUpdatable;
@@ -27,7 +27,9 @@ public class Player extends GameNode {
 
 		setTexture(new PlayerAnimation(playermovement));
 		
-		TrackballMovement.add(this,playermovement); 
+//		TrackballMovement.add(this,playermovement);
+		AccelerometerMovement.add(this,playermovement);
+//		SimpleKeyPressMovement.add(this);
 
 		IEvent shootEvent = new ShootEvent(this);
 		DoEventOnKeyPress.add(this,KeyEvent.KEYCODE_DPAD_CENTER, shootEvent);

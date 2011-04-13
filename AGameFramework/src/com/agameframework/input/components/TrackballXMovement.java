@@ -11,21 +11,21 @@ import com.agameframework.interfaces.IRemovable;
 import com.agameframework.object.GameNode;
 import com.agameframework.updatables.MovementUpdatable;
 
-public class TrackballMovement implements TrackballListener , IRemovable{
+public class TrackballXMovement implements TrackballListener , IRemovable{
 
 	private MovementUpdatable mMovement;
 	private float mMaxSpeed = 8f;
 	private float mImpact = 1.0f;
 
-	public TrackballMovement(MovementUpdatable movement)
+	public TrackballXMovement(MovementUpdatable movement)
 	{
 		mMovement = movement;
 		GameInput.addTrackballListener(this);
 	}
 
-	public static TrackballMovement add(GameNode gameNodeAddTo, MovementUpdatable movement)
+	public static TrackballXMovement add(GameNode gameNodeAddTo, MovementUpdatable movement)
 	{
-		TrackballMovement tm = new TrackballMovement(movement);
+		TrackballXMovement tm = new TrackballXMovement(movement);
 		gameNodeAddTo.addRemovable(tm);
 		return tm;
 	}
@@ -47,19 +47,6 @@ public class TrackballMovement implements TrackballListener , IRemovable{
 		else if (mMovement.mXMotion < -getMaxSpeed())
 		{
 			mMovement.mXMotion = -getMaxSpeed();
-		}
-
-		if (mMovement.mYMotion < getMaxSpeed() && mMovement.mYMotion > -getMaxSpeed())
-		{
-			mMovement.mYMotion -= event.getY()*getImpact();
-		}
-		else if (mMovement.mYMotion > getMaxSpeed())
-		{
-			mMovement.mYMotion = getMaxSpeed();	
-		}
-		else if (mMovement.mYMotion < -getMaxSpeed())
-		{
-			mMovement.mYMotion = -getMaxSpeed();
 		}
 	}
 

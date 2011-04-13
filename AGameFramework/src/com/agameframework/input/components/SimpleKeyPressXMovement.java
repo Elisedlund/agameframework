@@ -11,20 +11,20 @@ import com.agameframework.interfaces.IRemovable;
 import com.agameframework.object.GameNode;
 import com.agameframework.object.Rectangle;
 
-public class SimpleKeyPressMovement implements KeyPressListener , IRemovable{
+public class SimpleKeyPressXMovement implements KeyPressListener , IRemovable{
 
 	private Rectangle mRect;
 	private float mImpact = 10;
 	
-	private SimpleKeyPressMovement(Rectangle rect)
+	private SimpleKeyPressXMovement(Rectangle rect)
 	{
 		mRect = rect;
 		GameInput.addKeyPressListner(this);
 	}
 
-	public static SimpleKeyPressMovement add(GameNode gameNodeAddTo)
+	public static SimpleKeyPressXMovement add(GameNode gameNodeAddTo)
 	{
-		SimpleKeyPressMovement skpm = new SimpleKeyPressMovement(gameNodeAddTo);
+		SimpleKeyPressXMovement skpm = new SimpleKeyPressXMovement(gameNodeAddTo);
 		gameNodeAddTo.addRemovable(skpm);
 		return skpm;
 	}
@@ -43,26 +43,14 @@ public class SimpleKeyPressMovement implements KeyPressListener , IRemovable{
 			mRect.incX(mImpact);
 			return true;
 		}
-		if (keyCode == KeyEvent.KEYCODE_DPAD_UP
-				|| keyCode == KeyEvent.KEYCODE_W)
-		{
-			mRect.incY(mImpact);
-			return true;
-		}
-		else if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN
-				|| keyCode == KeyEvent.KEYCODE_S)
-		{
-			mRect.incY(-mImpact);
-			return true;
-		}
 		return false;
 	}
+
 
 	@Override
 	public void remove() {
 		GameInput.removeKeyPressListner(this);
 	}
-	
 	public void setImpact(float mImpact) {
 		this.mImpact = mImpact;
 	}

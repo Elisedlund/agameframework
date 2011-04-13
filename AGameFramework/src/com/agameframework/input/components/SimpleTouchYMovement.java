@@ -13,20 +13,20 @@ import com.agameframework.interfaces.IRemovable;
 import com.agameframework.object.GameNode;
 import com.agameframework.object.Rectangle;
 
-public class SimpleTouchMovement implements TouchDownListener, TouchMoveListener, IRemovable{
+public class SimpleTouchYMovement implements TouchDownListener, TouchMoveListener, IRemovable{
 
 	private Rectangle mRect;
 	
-	private SimpleTouchMovement(Rectangle rect)
+	private SimpleTouchYMovement(Rectangle rect)
 	{
 		mRect = rect;
 		GameInput.addTouchDownListner(this);
 		GameInput.addTouchMoveListner(this);
 	}
 
-	public static SimpleTouchMovement add(GameNode gameNodeAddTo)
+	public static SimpleTouchYMovement add(GameNode gameNodeAddTo)
 	{
-		SimpleTouchMovement stm = new SimpleTouchMovement(gameNodeAddTo);
+		SimpleTouchYMovement stm = new SimpleTouchYMovement(gameNodeAddTo);
 		gameNodeAddTo.addRemovable(stm);
 		return stm;
 	}
@@ -39,11 +39,11 @@ public class SimpleTouchMovement implements TouchDownListener, TouchMoveListener
 
 	@Override
 	public void touchDown(MotionEvent event) {
-		mRect.setXY(event.getX(),Math.abs(event.getY()-Game.getHeight()));
+		mRect.setY(Math.abs(event.getY()-Game.getHeight()));
 	}
 
 	@Override
 	public void touchMove(MotionEvent event) {
-		mRect.setXY(event.getX(),Math.abs(event.getY()-Game.getHeight()));
+		mRect.setY(Math.abs(event.getY()-Game.getHeight()));
 	}
 }
