@@ -50,11 +50,11 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 		super(text);
 	}
 
-//	public void addUpdateable(IUpdatable obj)
-//	{
-//		createUpdateListIfItDontExist();
-//		mUpdateList.add(obj);
-//	}
+	//	public void addUpdateable(IUpdatable obj)
+	//	{
+	//		createUpdateListIfItDontExist();
+	//		mUpdateList.add(obj);
+	//	}
 	public void addUpdateable(Updatable upd)
 	{
 		upd.mParent = this;
@@ -76,7 +76,7 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 		if(mRemoveUpdatableList != null && mRemoveUpdatableList.size() != 0)
 		{
 			int size = mRemoveUpdatableList.size();
-			for (int i = 0; i != size; i++) 
+			for (int i = 0; i < size; i++) 
 			{
 				mUpdateList.remove(mRemoveUpdatableList.get(i));
 			}
@@ -85,7 +85,7 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 
 
 		int size = mUpdateList.size();
-		for (int i = 0; i != size; i++) {
+		for (int i = 0; i < size; i++) {
 			mUpdateList.get(i).update();
 		}
 	}//end of update()
@@ -107,7 +107,7 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 		if(mRemoveRenderableList != null && mRemoveRenderableList.size() != 0)
 		{
 			int size = mRemoveRenderableList.size();
-			for (int i = 0; i != size; i++) 
+			for (int i = 0; i < size; i++) 
 			{
 				mRenderableList.remove(mRemoveRenderableList.get(i));
 			}
@@ -116,7 +116,7 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 		if(mRenderableList != null)
 		{
 			int size = mRenderableList.size();
-			for (int i = 0; i != size; i++) {
+			for (int i = 0; i < size; i++) {
 				mRenderableList.get(i).render(gl);
 			}
 		}
@@ -181,7 +181,7 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 
 	public void remove()
 	{
-		
+
 		//removes removables. like input.
 		if(mRemovableList != null) {
 			int size = mRemovableList.size();
@@ -234,21 +234,37 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 	}
 
 
-	public ArrayList<IUpdatable> findAll(Class<?> c)
+	@SuppressWarnings("unchecked")
+	public <c> ArrayList<c> findAll(Class<?> c)
 	{
 		//TODO use instanceof
-		if(mUpdateList == null) {return null;}
+		if(mUpdateList == null || mUpdateList.isEmpty()) {return null;}
 
-		ArrayList<IUpdatable> list = new ArrayList<IUpdatable>();
+		ArrayList<c> list = new ArrayList<c>();
 		int size = mUpdateList.size();
 		for (int i = 0; i != size; i++) {
 			if(mUpdateList.get(i).getClass() == c)
 			{
-				list.add(mUpdateList.get(i));
+				list.add((c) mUpdateList.get(i));
 			}
 		}
 		return list;
 	}
+	public void removeAll(Class<?> c)
+	{
+		//TODO Bug.
+		//TODO use instanceof
+		if(mUpdateList == null || mUpdateList.isEmpty()) {return;}
+
+		int size = mUpdateList.size();
+		for (int i = 0; i < size; i++) {
+			if(mUpdateList.get(i).getClass() == c)
+			{
+				((IRemovable)mUpdateList.get(i)).remove();
+			}
+		}
+	}
+
 
 	public ArrayList<IUpdatable> getUpdatableList()
 	{
@@ -256,13 +272,13 @@ public class GameNode extends Sprite implements IUpdatableAndRenderableAndRemova
 	}
 
 	//TODO 
-//	public void message(String massage)
-//	{
-//	}
-//
-//	public void message(String massage, ICondition condition)
-//	{
-//	}
+	//	public void message(String massage)
+	//	{
+	//	}
+	//
+	//	public void message(String massage, ICondition condition)
+	//	{
+	//	}
 
 	public void init()
 	{}
